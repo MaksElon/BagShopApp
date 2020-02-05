@@ -32,3 +32,4 @@ C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcor
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.dll
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.pdb
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.csproj.CopyComplete
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.csprojAssemblyReference.cache

@@ -24,7 +24,7 @@ namespace MyOwnApp.Data.Entities
                 context.Database.Migrate();
                 PreConfigured.SeedRoles(managerRole);
                 await PreConfigured.SeedUsers(manager,context);
-                await PreConfigured.SeedProducts(context);
+                await PreConfigured.SeedProducts(context,env);
 
             }
         }

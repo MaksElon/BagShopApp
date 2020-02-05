@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MyOwnApp.Data.Entities.Seed
 {
@@ -208,6 +209,35 @@ namespace MyOwnApp.Data.Entities.Seed
             }
 
         }
+        public static async Task SeedProductImages(EFContext context, IHostingEnvironment env)
+        {
+            try
+            {
+                await context.ProductImages.AddRangeAsync(new List<ProductImage>{
+                new ProductImage
+                {
+                    Name=env.WebRootPath+ @"\images\bag1.jfif",
+                    ProductId=1
+                },
+                new ProductImage
+                {
+                    Name=env.WebRootPath+ @"\images\bag2.jfif",
+                    ProductId=2
+                },
+                new ProductImage
+                {
+                    Name=env.WebRootPath+ @"\images\bag3.jfif",
+                    ProductId=3
+                }
+            
+            });
+                await context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+            }
+
+        }
         public static async Task SeedDimensions(EFContext context)
         {
             try
@@ -246,8 +276,9 @@ namespace MyOwnApp.Data.Entities.Seed
             }
 
         }
-        public static async Task SeedProducts(EFContext context)
+        public static async Task SeedProducts(EFContext context, IHostingEnvironment env)
         {
+                    
             if (!context.Products.Any())
             {
                 try
@@ -304,6 +335,8 @@ namespace MyOwnApp.Data.Entities.Seed
                     await context.SaveChangesAsync();
                     if (!context.Dimensions.Any())
                         await SeedDimensions(context);
+                    if (!context.ProductImages.Any())
+                        await SeedProductImages(context, env);
                 }
                 catch (Exception ex)
                 {
