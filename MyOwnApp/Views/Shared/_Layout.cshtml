@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyOwnApp</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/styleFoo.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light pb-0">
+            <div class="fullWidth">
+                <div class="headerTop">
+                    <a class="navbar-brand logo" href="#">
+                        <img src="images/logoShoes.png" />
+                    </a>
+
+                    <form class="form-inline my-2 my-lg-0 ">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+                            <i class="fas fa-search" style="margin-right:10px"></i>Search
+                        </button>
+                    </form>
+
+                </div>
+                <button id="toggleNavBtn" class="navbar-toggler px-2" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active ">
+                            <div class="dropdown">
+                                <a class="nav-link" href="#">Women <span class="sr-only">(current)</span></a>
+                                <div class="dropdown-content">
+                                    <div class="showFlex">
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Thanks & Complain</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Department</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Contacts</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Privacy & Cookies </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="tripleColImg">
+                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown">
+                                <a class="nav-link " href="#">Men <span class="sr-only">(current)</span></a>
+                                <div class="dropdown-content">
+                                    <div class="showFlex">
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Thanks & Complain</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Department</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Contacts</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Privacy & Cookies </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="tripleColImg">
+                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown">
+                                <a class="nav-link" href="#">Kids<span class="sr-only">(current)</span></a>
+                                <div class="dropdown-content">
+                                    <div class="showFlex">
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tripleColImg">
+                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown">
+                                <a class="nav-link" href="#">Accessories<span class="sr-only">(current)</span></a>
+                                <div class="dropdown-content">
+                                    <div class="showFlex">
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tripleColImg">
+                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown">
+                                <a class="nav-link" href="#">Brands<span class="sr-only">(current)</span></a>
+                                <div class="dropdown-content">
+                                    <div class="container">
+                                        @{
+                                            var producers = Model.GetProducers;
+                                            for (int i = 1; i <= Model.ProducersCount / 6; i++)
+                                            {
+
+                                                <div class="row mt-4">
+                                                    @{
+                                                        for (int j = ((i - 1) * 6); j < i * 6; j++)
+                                                        {
+                                                            <div class="card cardBrand">
+                                                                <div class="card-body">
+                                                                    <img class="brandImg" src=@("images/"+ producers[j].ImageName) />
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+
+                                                </div>
+
+                                            }
+                                            if (Model.ProducersCount % 6 != 0)
+                                            {
+                                                <div class="row mt-4">
+                                                    @{ for (int i = Model.ProducersCount - Model.ProducersCount % 6; i < Model.ProducersCount; i++)
+                                                        {
+                                                            <div class="card cardBrand">
+                                                                <div class="card-body">
+                                                                    <img class="brandImg" src=@("images/"+ producers[i].ImageName) />
+                                                                </div>
+                                                            </div>
+                                                        }
+
+                                                    }
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="text-center mt-3 mb-4">
+                                        <button type="button" class="btn btn-outline-dark">View All Brands</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <div class="dropdown">
+                                <a class="nav-link" href="#">Sale <span class="sr-only">(current)</span></a>
+                                <div class="dropdown-content">
+                                    <div class="showSaleFlex">
+                                        <div class="tripleCol">
+                                            <ul class="pl-0">
+                                                <li>
+                                                    <h5>ASsD</h5>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Doctors</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">News</a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="tripleColImg">
+                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="map">
+                    <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:10px"></i>Choose your store</a>
+                </div>
+                <div class="account">
+                    <a href="#"><i class="fas fa-user-alt" style="margin-right:10px"></i></a>
+                </div>
+                <div class="cart">
+                    <a href="#"><i class="fas fa-shopping-cart" style="margin-right:10px"></i></a>
+                </div>
+            </div>
+        </nav>
+        <div class="miniAdvert active">
+            <a class="text-light" id="flicker" href="#">Sale </a>
+        </div>
+    </div>
+    @RenderBody()
+
+    <footer class="site-footer">
+        <div class="flex">
+            <div>
+                <!--<h6>Categories</h6>-->
+                <ul class="footer-links">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Doctors</a>
+                    </li>
+                    <li>
+                        <a href="#">News</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <!--<h6>Categories</h6>-->
+                <ul class="footer-links">
+                    <li>
+                        <a href="#">Thanks & Complain</a>
+                    </li>
+                    <li>
+                        <a href="#">Department</a>
+                    </li>
+                    <li>
+                        <a href="#">Contacts</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy & Cookies </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="icocont">
+                <ul class="icons">
+                    <li>
+                        <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a class="youtube" href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+                    <li>
+                        <a class="telegram" href="#"><i class="fab fa-telegram-plane"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <p class="rights">
+                Copyright &copy; 2018-2019 All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="~/js/jquery.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,114 @@
+.site-footer {
+    background-color: #222222;
+    padding: 20px 0px;
+    font-size: 15px;
+    line-height: 24px;
+    color: white;
+    
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-content: end;
+}
+
+.site-footer hr {
+    background-color:white;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+
+
+.site-footer h6 {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.site-footer a {
+    color: white;
+}
+
+    .site-footer a:hover {
+        color: #bbb;
+        text-decoration: underline;
+    }
+
+.footer-links {
+    padding-left: 0;
+}
+
+    .footer-links li {
+        display: block
+    }
+
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+    }
+
+        .footer-links a:active, .footer-links a:focus, .footer-links a:hover {
+            color: #707070;
+            text-decoration: underline;
+        }
+
+
+
+
+.site-footer .icons a {
+    width: 40px;
+    height: 40px;
+    margin-left: 6px;
+    background-color: #bbb;
+}
+
+.icocont {
+    flex-direction: column;
+    align-self: center;
+}
+
+.icons {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+    .icons li {
+        display: inline;
+    }
+
+
+
+    .icons a {
+        color: white;
+        font-size: 16px;
+        display: inline-block;
+        line-height: 44px;
+        width: 44px;
+        height: 44px;
+        text-align: center;
+        border-radius: 20%;
+    }
+
+        .icons a.facebook:hover {
+            background-color: #2fffdf;
+        }
+
+        .icons a.twitter:hover {
+            background-color: #00aced;
+        }
+
+        .icons a.telegram:hover {
+            background-color: #000000;
+        }
+
+        .icons a.youtube:hover {
+            background-color: #ea4c89;
+        }
+
+.rights {
+    text-align: center;
+}
