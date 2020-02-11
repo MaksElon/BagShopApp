@@ -1,0 +1,103 @@
+﻿.login-page {
+    padding: 8% 0 0;
+}
+
+    .login-page .form {
+        position: relative;
+        background: #FFFFFF;
+        max-width: 30%;
+        margin: 0 auto 100px;
+        padding: 45px;
+        text-align: center;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+        .login-page .form button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #436aa0;
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+
+            .login-page .form button:hover, .form button:active, .form button:focus {
+                background: #345076;
+                cursor:pointer;
+            }
+
+        .login-page .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+
+            .login-page .form .message a {
+                color: #42AEEC;
+                text-decoration: none;
+            }
+
+body {
+    /*background: linear-gradient(to left, #3160f6, #7390ee);*/
+    /*background: linear-gradient(to left, #FF2525,#fc2f40);*/
+    background-color: silver;
+    font-family: "Roboto", sans-serif;
+}
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    .divider-text span {
+        padding: 7px;
+        font-size: 12px;
+        position: relative;
+        z-index: 2;
+        background-color:white;
+    }
+    .divider-text:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        top: 55%;
+        left: 0;
+        z-index: 1;
+    }
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+.radioB input {
+    margin-right: 10px;
+}
+
+.text-danger {
+    font-size: 12px;
+}
+
+.text-success {
+    font-size: 12px;
+}
+
+#eye {
+    width: 38px;
+    height: 38px;
+    background-image: url(../images/show_hide_password.png);
+    background-size: 35px;
+    background-color: white;
+    border-right: 1px #929292 solid;
+    border-top: 1px #929292 solid;
+    border-bottom: 1px #929292 solid;
+}

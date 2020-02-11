@@ -17,10 +17,7 @@ namespace MyOwnApp.Data.Models
         public string FirstName { get; set; }
         [Required, StringLength(20)]
         public string LastName { get; set; }
-        [Required]
-        public int Age { get; set; }
         public int CountOfLogins { get; set; }
-        public string AboutMe { get; set; }
         public string Image { get; set; }
         public string Address { get; set; }
         public DateTime RegisterDate { get; set; }

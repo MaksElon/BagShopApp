@@ -66,8 +66,6 @@ namespace MyOwnApp.Data.Repositories
                 temp.FirstName = user.FirstName;
                 temp.LastName = user.LastName;
                 temp.RegisterDate = user.RegisterDate;
-                temp.Age = user.Age;
-                temp.AboutMe = user.AboutMe;
                 temp.Image = user.Image;
                 _context.SaveChanges();
             }

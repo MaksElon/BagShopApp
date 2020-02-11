@@ -86,7 +86,7 @@ h1,h2 {
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.header:first {
+.header:first-child {
   display: flex;
   flex-direction: column;
 }
@@ -201,7 +201,6 @@ h1,h2 {
   height: 40px;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -253,6 +252,9 @@ h1,h2 {
 .header {
   background-color: #c40e0b;
 }
+.main {
+    padding-top:20px;
+}
 .nav-link {
   font-size: 12pt;
   color: #fdf9f9fa !important;
@@ -288,23 +290,10 @@ h1,h2 {
   width: 100vw !important;
   height: 70vh !important;
 }
-
-.register {
-  margin-top: 50px;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-}
 .curs:hover {
   cursor: pointer;
 }
 
-.login {
-  margin-top: 90px;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .imgRecommend {
   height: 160px !important;

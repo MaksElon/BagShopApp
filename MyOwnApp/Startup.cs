@@ -78,7 +78,7 @@ namespace MyOwnApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Bag}/{action=GetMainPage}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

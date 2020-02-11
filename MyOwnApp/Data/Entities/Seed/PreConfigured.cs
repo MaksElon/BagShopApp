@@ -68,9 +68,7 @@ namespace MyOwnApp.Data.Entities.Seed
                     UserProfile profile1 = new UserProfile
                     {
                         Id = user1.Id,
-                        AboutMe = "...",
                         Address = "Pushkina 44, 12a",
-                        Age = 20,
                         CountOfLogins = 0,
                         FirstName = "Ivan",
                         LastName = "Ivanenko",
@@ -80,9 +78,7 @@ namespace MyOwnApp.Data.Entities.Seed
                     UserProfile profile2 = new UserProfile
                     {
                         Id = user2.Id,
-                        AboutMe = "...",
                         Address = "S.Banderu 44, 12a",
-                        Age = 18,
                         CountOfLogins = 0,
                         FirstName = "Semen",
                         LastName = "Semenko",

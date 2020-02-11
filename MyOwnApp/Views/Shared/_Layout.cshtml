@@ -9,16 +9,18 @@
     <link rel="stylesheet" href="~/css/styleFoo.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://kit.fontawesome.com/279e8c03ce.js"></script>
 </head>
 <body>
-    
+
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light pb-0">
             <div class="fullWidth">
                 <div class="headerTop">
                     <a class="navbar-brand logo" href="#">
-                        <img src="images/logoShoes.png" />
+                        <img src="~/images/logoShoes.png" />
                     </a>
 
                     <form class="form-inline my-2 my-lg-0 ">
@@ -370,7 +372,7 @@
                     <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:10px"></i>Choose your store</a>
                 </div>
                 <div class="account">
-                    <a href="#"><i class="fas fa-user-alt" style="margin-right:10px"></i></a>
+                    <a asp-controller="Account" asp-action="Register"><i class="fas fa-user-alt" style="margin-right:10px"></i></a>
                 </div>
                 <div class="cart">
                     <a href="#"><i class="fas fa-shopping-cart" style="margin-right:10px"></i></a>
@@ -446,7 +448,6 @@
         </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
