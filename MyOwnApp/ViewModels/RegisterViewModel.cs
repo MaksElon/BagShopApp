@@ -33,17 +33,16 @@ namespace MyOwnApp.ViewModels
         [Display(Name = "Confirm password")]
         public string PasswordConfirm { get; set; }
 
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name ="Address")]
-        public string Address { get; set; }
+        //[Required]
+        //[DataType(DataType.Text)]
+        //[Display(Name ="Address")]
+        //public string Address { get; set; }
 
         [Required]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone number")]
         public string Phone { get; set; }
 
-        public List<Producer> GetProducers { get; set; }
-        public int ProducersCount { get; set; }
+        
     }
 }

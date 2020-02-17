@@ -372,11 +372,13 @@
                     <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:10px"></i>Choose your store</a>
                 </div>
                 <div class="account">
-                    <a asp-controller="Account" asp-action="Register"><i class="fas fa-user-alt" style="margin-right:10px"></i></a>
+                    <a asp-controller="Account" asp-action="AccountGet"><i class="fas fa-user-alt" style="margin-right:10px"></i></a>
                 </div>
-                <div class="cart">
-                    <a href="#"><i class="fas fa-shopping-cart" style="margin-right:10px"></i></a>
-                </div>
+                <form asp-action="Logout" asp-controller="Account">
+                    <div class="cart">
+                        <button style="visibility:hidden" type="submit"><i style="visibility:visible" class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </form>
             </div>
         </nav>
         <div class="miniAdvert active">

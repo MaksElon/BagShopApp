@@ -4,7 +4,6 @@ submBtn.style.opacity = "0.7";
 
 function email_validate(email) {
     let regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
-
     if (regMail.test(email) == false) {
         messageE.innerHTML = "<span class='text-danger'>Email address is not valid yet.</span>";
         document.getElementById("email").style.border = "1px solid red";
@@ -29,7 +28,6 @@ function pass_validate(password) {
     if (regex.test(password) == false) {
         messageP.innerHTML = "<span class='text-danger'>Password is not valid.</span>";
         document.getElementById("password").style.border = "1px solid red";
-        eye.style.border = "1px solid red";
         errors[3] = false;
         submBtn.disabled = true;
         submBtn.style.opacity = "0.7";
@@ -37,7 +35,6 @@ function pass_validate(password) {
     } else {
         messageP.innerHTML = "<span class='text-success'>Thanks, you have entered a valid password!</span>";
         document.getElementById("password").style.border = "1px solid #ced4da";
-        eye.style.border = "1px solid #ced4da";
         errors[3] = true;
         submBtn.disabled = false;
         submBtn.style.opacity = "1";
@@ -80,22 +77,22 @@ function phone_validate(phone) {
 
     }
 }
-function address_validate(address) {
-    if (address === "") {
-        messageA.innerHTML = "<span class='text-danger'>Input your address</span>";
-        document.getElementById("address").style.border = "1px solid red";
-        errors[5] = false;
-        submBtn.style.opacity = "0.7";
-        submBtn.disabled = true;
-    } else {
-        messageA.innerHTML = "<span class='text-success'>Thanks, you have entered a valid address!</span>";
-        document.getElementById("address").style.border = "1px solid #ced4da";
-        errors[5] = true;
-        submBtn.style.opacity = "1";
-        submBtn.disabled = false;
+//function address_validate(address) {
+//    if (address === "") {
+//        messageA.innerHTML = "<span class='text-danger'>Input your address</span>";
+//        document.getElementById("address").style.border = "1px solid red";
+//        errors[5] = false;
+//        submBtn.style.opacity = "0.7";
+//        submBtn.disabled = true;
+//    } else {
+//        messageA.innerHTML = "<span class='text-success'>Thanks, you have entered a valid address!</span>";
+//        document.getElementById("address").style.border = "1px solid #ced4da";
+//        errors[5] = true;
+//        submBtn.style.opacity = "1";
+//        submBtn.disabled = false;
 
-    }
-}
+//    }
+//}
 
 function FN_validate(firstName) {
     if (firstName === "") {
@@ -130,21 +127,21 @@ function LN_validate(lastName) {
 
     }
 }
-function check_validate() {
-    if (gridCheck.checked === false) {
-        messageBtn.innerHTML = "<span class='text-danger'>Accept the terms</span>";
-        errors[7] = false;
-        submBtn.disabled = true;
-        submBtn.style.opacity = "0.7";
+//function check_validate() {
+//    if (gridCheck.checked === false) {
+//        messageBtn.innerHTML = "<span class='text-danger'>Accept the terms</span>";
+//        errors[7] = false;
+//        submBtn.disabled = true;
+//        submBtn.style.opacity = "0.7";
 
-    } else {
-        messageBtn.innerHTML = "";
-        errors[7] = true;
-        submBtn.style.opacity = "1";
-        submBtn.disabled = false;
+//    } else {
+//        messageBtn.innerHTML = "";
+//        errors[7] = true;
+//        submBtn.style.opacity = "1";
+//        submBtn.disabled = false;
 
-    }
-}
+//    }
+//}
 function form_validate(e) {
     if (e) e.preventDefault();
 
@@ -162,11 +159,11 @@ function form_validate(e) {
     let json = JSON.stringify(arr);
     console.log(json);
 }
-function EyeClick(e) {
-    if (e) e.preventDefault();
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
-}
+//function EyeClick(e) {
+//    if (e) e.preventDefault();
+//    if (password.type === "password") {
+//        password.type = "text";
+//    } else {
+//        password.type = "password";
+//    }
+//}
