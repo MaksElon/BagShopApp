@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyOwnApp.Data.Interfaces;
+using MyOwnApp.Models;
 using MyOwnApp.ViewModels;
+using Newtonsoft.Json;
 
 namespace MyOwnApp.Controllers
 {
@@ -32,11 +35,22 @@ namespace MyOwnApp.Controllers
         }
         public ViewResult GetMainPage()
         {
+            
             MainPageModel obj = new MainPageModel();
             obj.GetProducers = _producers.GetProducers.ToList();
             obj.ProducersCount = _producers.GetProducers.Count();
             obj.GetRecommendedProducts = _products.GetProducts.ToList();
             obj.RecommendedProductsCount = 9;
+            return View(obj);
+        }
+        [HttpGet]
+        public ViewResult Catalog()
+        {
+            CatalogModel obj = new CatalogModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+            obj.GetProducts = _products.GetProducts.ToList();
+            obj.ProductsCount = _products.GetProducts.Count();
             return View(obj);
         }
     }

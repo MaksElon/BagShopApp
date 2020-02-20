@@ -59,7 +59,10 @@ namespace MyOwnApp
             services.AddTransient<IProductImages, ProductImageRepository>();
             services.AddTransient<IMaterials, MaterialRepository>();
             services.AddTransient<IDimensions, DimensionRepository>();
+            services.AddTransient<ITypeOfProducts, TypeOfProductRepository>();
 
+            services.AddMemoryCache();
+            services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -80,7 +83,9 @@ namespace MyOwnApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
+
+            app.UseSession();
 
             await SeedDB.SeedData(app.ApplicationServices, env, this.Configuration);
             app.UseMvc(routes =>

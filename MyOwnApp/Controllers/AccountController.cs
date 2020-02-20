@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyOwnApp.Data.Entities;
 using MyOwnApp.Data.Interfaces;
 using MyOwnApp.Data.Models;
+using MyOwnApp.Models;
 using MyOwnApp.ViewModels;
+using Newtonsoft.Json;
 
 namespace MyOwnApp.Controllers
 {
@@ -30,9 +33,14 @@ namespace MyOwnApp.Controllers
             _producers = producers;
         }
         [HttpGet]
-        public IActionResult AccountGet()
+        public IActionResult AccountAction()
         {
-            AccountGetModel obj = new AccountGetModel();
+            var info = HttpContext.Session.GetString("SessionUser");
+            if (info != null)
+            {
+                var result = JsonConvert.DeserializeObject<UserInfo>(info);
+            }
+            AccountActionModel obj = new AccountActionModel();
             obj.GetProducers = _producers.GetProducers.ToList();
             obj.ProducersCount = _producers.GetProducers.Count();
             RegisterViewModel obj2 = new RegisterViewModel();           
@@ -62,7 +70,7 @@ namespace MyOwnApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            AccountGetModel obj = new AccountGetModel();
+            AccountActionModel obj = new AccountActionModel();
             obj.GetProducers = _producers.GetProducers.ToList();
             obj.ProducersCount = _producers.GetProducers.Count();
             obj.RegisterViewModel = new RegisterViewModel();
@@ -86,12 +94,18 @@ namespace MyOwnApp.Controllers
             await _signInManager.SignInAsync(user, isPersistent: false);
             
             await Authenticate(user.Email);
+            var userInfo = new UserInfo()
+            {
+                UserId = user.Id,
+                Email = user.Email
+            };
+            HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
             return RedirectToAction("Index","Home");
         }
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            AccountGetModel obj = new AccountGetModel();
+            AccountActionModel obj = new AccountActionModel();
             if (!ModelState.IsValid)
             {
                 obj.GetProducers = _producers.GetProducers.ToList();

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyOwnApp.ViewModels
 {
-    public class AccountGetModel
+    public class CatalogModel
     {
-        public LoginViewModel LoginViewModel { get; set; }
-        public RegisterViewModel RegisterViewModel { get; set; }
+        public List<Product> GetProducts { get; set; }
+        public int ProductsCount { get; set; }
         public List<Producer> GetProducers { get; set; }
         public int ProducersCount { get; set; }
     }

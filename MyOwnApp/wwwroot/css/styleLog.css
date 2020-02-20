@@ -51,7 +51,7 @@ body {
         position: absolute;
         transform: rotateY(180deg);
         backface-visibility: hidden;
-        transition: all .4s linear;
+        transition: all .7s linear;
     }
 
     .login-html .sign-in,
@@ -99,14 +99,16 @@ body {
             color: #fff;
             display: block;
         }
-
-        .login-form .group .input,
-        .login-form .group .button {
-            border: none;
-            padding: 15px 20px;
-            border-radius: 25px;
-            background: rgba(255,255,255,.1);
-        }
+            .login-form .group .input:focus{
+                outline:none !important;
+            }
+            .login-form .group .input,
+            .login-form .group .button {
+                border: none;
+                padding: 15px 20px;
+                border-radius: 25px;
+                background: rgba(255,255,255,.1);
+            }
 
         .login-form .group input[data-type="password"] {
             text-security: circle;
@@ -130,7 +132,7 @@ body {
             display: inline-block;
             background: rgba(255,255,255,.1);
         }
-
+        
             .login-form .group label .icon:before,
             .login-form .group label .icon:after {
                 content: '';
@@ -138,7 +140,7 @@ body {
                 height: 2px;
                 background: #fff;
                 position: absolute;
-                transition: all .2s ease-in-out 0s;
+                transition: all .5s ease-in-out 0s;
             }
 
             .login-form .group label .icon:before {

@@ -1,0 +1,265 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Catalog</title>
+    <link href="~/css/sliderStyle.css" rel="stylesheet" />
+    <link href="~/css/dropdownStyle.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="main mainList">
+        @await Component.InvokeAsync("Category")
+
+        <div class="productList">
+
+            <div class="filter-bar">
+                <select class="customSelect">
+                    <option value="hide">Sorted by</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                </select>
+                <select class="customSelect">
+                    <option value="hide">View</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+
+                </select>
+
+            </div>
+            <div class="mr-0 row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    <div class="card cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib95135.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                33$
+                            </p>
+                            <p hidden="true" class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                99$
+                            </p>
+                            <p hidden="true" class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                99$
+                            </p>
+                            <p hidden="true" class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Under armour</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                23$
+                            </p>
+                            <p class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib73711.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">49$</p>
+                            <p class="card-text oldPrice">40$</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mr-0 row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    <div class="card cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib95135.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                33$
+                            </p>
+                            <p hidden="true" class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                99$
+                            </p>
+                            <p hidden="true" class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                99$
+                            </p>
+                            <p hidden="true" class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Under armour</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">
+                                23$
+                            </p>
+                            <p class="card-text oldPrice">40$</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card  cardList">
+                        <img itemprop="image" alt="doctors"
+                             src="https://www.famousfootwear.com/productimages/shoes_ib73711.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
+                             class="card-img-top imgRecommend">
+                        <div itemprop="text" class="card-body">
+                            <h5 class="card-title">Nike</h5>
+                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
+                            <hr>
+                            <p class="card-text price">49$</p>
+                            <p class="card-text oldPrice">40$</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paginationForm">
+                <div class="containerU">
+                    <ul id="pagUl">
+                        <li class="page-item">
+                            <a class="page-link" id="btn_prev" href="javascript:prevPage()">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">6</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">7</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">8</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)"
+                               href="#">...</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">48</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">49</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" onclick="choosePage(this.innerHTML)" href="#">50</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" id="btn_next" href="javascript:nextPage()">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="~/js/dropdownJquery.js"></script>
+    <script src="~/js/paginationJquery.js"></script>
+    <script src="~/js/sliderJquery.js"></script>
+</body>
+</html>
