@@ -22,6 +22,8 @@ namespace MyOwnApp.Data.Models
         public float Price { get; set; }
         public bool IsAdvertisingPaid { get; set; }
         public string Description { get; set; }
+        public int Likes { get; set; }
+        public int Dislikes { get; set; }
         [ForeignKey("MaterialOf")]
         public int MaterialId { get; set; }
         [ForeignKey("ProductModelOf")]
@@ -37,6 +39,7 @@ namespace MyOwnApp.Data.Models
         public virtual Producer ProducerOf { get; set; }
         public virtual Dimension DimensionOf { get; set; }
 
+        public virtual ICollection<ProductOrder> ProductOrders { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
     }
 }

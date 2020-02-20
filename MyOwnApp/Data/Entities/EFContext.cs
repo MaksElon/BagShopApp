@@ -25,17 +25,27 @@ namespace MyOwnApp.Data.Entities
         public virtual DbSet<ProductModel> ProductModels { get; set; }
         public virtual DbSet<UserProfile> UserProfiles { get; set; }
         public virtual DbSet<Dimension> Dimensions { get; set; }
+        public virtual DbSet<ProductOrder> ProductOrders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<ProductOrder>()
+                .HasKey(bc => new { bc.OrderId, bc.ProductId });
+            builder.Entity<ProductOrder>()
+                .HasOne(p => p.ProductOf)
+                .WithMany(po => po.ProductOrders)
+                .HasForeignKey(p => p.ProductId);
+            builder.Entity<ProductOrder>()
+                .HasOne(p => p.OrderOf)
+                .WithMany(po => po.ProductOrders)
+                .HasForeignKey(p => p.OrderId);
 
 
             builder.Entity<UserRole>(userRole =>
             {
                 userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
-
 
 
                 userRole.HasOne(ur => ur.Role)
