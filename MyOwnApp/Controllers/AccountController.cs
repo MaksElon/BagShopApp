@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using MyOwnApp.Data.Entities;
 using MyOwnApp.Data.Interfaces;
@@ -24,13 +25,60 @@ namespace MyOwnApp.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly EFContext _context;
         private readonly IProducers _producers;
+        private readonly IEmailSender _emailSender;
         public AccountController(IProducers producers, UserManager<User> userManager, SignInManager<User> signInManager,
-        EFContext context)
+        EFContext context, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _producers = producers;
+            _emailSender = emailSender;
+        }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            ForgotPasswordModel obj = new ForgotPasswordModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+            return View(obj);
+        }
+        [HttpGet]
+        [Route("Account/ChangePassword/{id}")]
+        public IActionResult ChangePassword(string id)
+        {
+            ChangePasswordModel obj = new ChangePasswordModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+            return View(obj);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
+        {
+            ForgotPasswordModel obj = new ForgotPasswordModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+            if (!ModelState.IsValid)
+            {
+                return View(obj);
+            }
+            var user = _context.Users.FirstOrDefault(t => t.Email == model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Email is not valid");
+                return View(obj);
+            }
+            //var userName = user.UserProfile.FirstName +" "+ user.UserProfile.LastName;
+            var userName = user.Email;
+            string url = "https://localhost:44398/Account/ChangePassword/" + user.Id;
+            await _emailSender.SendEmailAsync("masososon@gmail.com", "ForgotPassword",
+                $"Dear {userName}," +
+                $"<br/>"+
+                $"To change your change your password"+
+                $"<br/>" +
+                $"click on this link <a href='{url}'>press</a>");
+            
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public IActionResult AccountAction()

@@ -26,6 +26,7 @@ namespace MyOwnApp.Data.Entities
         public virtual DbSet<UserProfile> UserProfiles { get; set; }
         public virtual DbSet<Dimension> Dimensions { get; set; }
         public virtual DbSet<ProductOrder> ProductOrders { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

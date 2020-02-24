@@ -38,3 +38,7 @@ C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcor
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.csprojAssemblyReference.cache
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Bag\Catalog.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Category\Default.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\ChangePassword.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Bag\Product.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Bag\Cart.cshtml.g.cs

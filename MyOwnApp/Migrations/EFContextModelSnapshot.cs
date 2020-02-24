@@ -238,6 +238,8 @@ namespace MyOwnApp.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<bool>("Status");
+
                     b.HasKey("Id");
 
                     b.ToTable("tbl_Orders");

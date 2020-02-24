@@ -30,7 +30,8 @@
           "Microsoft.EntityFrameworkCore": "2.1.14",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.14",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10",
+          "SendGrid": "9.12.7"
         },
         "runtime": {
           "MyOwnApp.dll": {}
@@ -361,6 +362,20 @@
         },
         "compile": {
           "lib/netstandard1.0/Remotion.Linq.dll": {}
+        }
+      },
+      "SendGrid/9.12.7": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.12.7.0",
+            "fileVersion": "9.12.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
         }
       },
       "System.Collections.Immutable/1.5.0": {},
@@ -3680,6 +3695,13 @@
       "sha512": "sha512-fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "path": "remotion.linq/2.2.0",
       "hashPath": "remotion.linq.2.2.0.nupkg.sha512"
+    },
+    "SendGrid/9.12.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pI4hxV9oRCA1L2/Gjn5T7U0R1dxQYEyDfG0Qjhqw1pGxOn122wkqhI1pOvt0LTXwoqhF34UudicMy4opjYNwfQ==",
+      "path": "sendgrid/9.12.7",
+      "hashPath": "sendgrid.9.12.7.nupkg.sha512"
     },
     "System.Collections.Immutable/1.5.0": {
       "type": "package",

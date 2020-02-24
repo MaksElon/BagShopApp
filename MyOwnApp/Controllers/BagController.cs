@@ -21,8 +21,8 @@ namespace MyOwnApp.Controllers
         private readonly IProductImages _productImages;
         private readonly IMaterials _materials;
         private readonly IDimensions _dimensions;
-
-        public BagController(IUserProfiles userProfiles,IDimensions dimensions,IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
+        private readonly IOrders _orders;
+        public BagController(IOrders orders,IUserProfiles userProfiles,IDimensions dimensions,IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
         {
             _products = products;
             _users = users;
@@ -32,6 +32,7 @@ namespace MyOwnApp.Controllers
             _materials = materials;
             _dimensions = dimensions;
             _userProfiles = userProfiles;
+            _orders = orders;
         }
         public ViewResult GetMainPage()
         {
@@ -51,6 +52,25 @@ namespace MyOwnApp.Controllers
             obj.ProducersCount = _producers.GetProducers.Count();
             obj.GetProducts = _products.GetProducts.ToList();
             obj.ProductsCount = _products.GetProducts.Count();
+            return View(obj);
+        }
+        [HttpGet]
+        public ViewResult Cart()
+        {
+            CartModel obj = new CartModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+            obj.GetOrders = _orders.GetOrders.ToList();
+            obj.OrdersCount = _orders.GetOrders.Count();
+            return View(obj);
+        }
+        [HttpGet]
+        public ViewResult Product()
+        {
+            ProductModel obj = new ProductModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+           
             return View(obj);
         }
     }

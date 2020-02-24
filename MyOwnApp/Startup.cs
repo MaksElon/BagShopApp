@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MyOwnApp.Data.Entities;
 using MyOwnApp.Data.Interfaces;
 using MyOwnApp.Data.Repositories;
+using MyOwnApp.Services;
 
 namespace MyOwnApp
 {
@@ -51,9 +53,11 @@ namespace MyOwnApp
                     options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                 });
 
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IProducts, ProductRepository>();
             services.AddTransient<IUsers, UserRepository>();
             services.AddTransient<IUserProfiles, UserProfileRepository>();
+            services.AddTransient<IOrders, OrderRepository>();
             services.AddTransient<IProducers, ProducerRepository>();
             services.AddTransient<IProductModels, ProductModelRepository>();
             services.AddTransient<IProductImages, ProductImageRepository>();
