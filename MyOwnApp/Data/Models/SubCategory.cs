@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace MyOwnApp.Data.Models
 {
-    [Table("tbl_TypeOfBags")]
-    public class TypeOfProduct
+    [Table("tbl_SubCategory")]
+    public class SubCategory
     {
+        [Key]
         public int Id { get; set; }
         [StringLength(25)]
         public string Name { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
-
+        [ForeignKey("ProductTypeOf")]
+        public int ProductTypeId { get; set; }
+        public virtual TypeOfProduct ProductTypeOf { get; set; }
     }
 }

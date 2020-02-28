@@ -245,7 +245,7 @@ namespace MyOwnApp.Data.Entities.Seed
                 Height=29,
                 BottomWidth=12,
                 HandleLength=60,
-                ProductId=0
+                ProductId=1
             },
             new Dimension
             {
@@ -253,7 +253,7 @@ namespace MyOwnApp.Data.Entities.Seed
                 Height=26,
                 BottomWidth=14,
                 HandleLength=41,
-                ProductId=1
+                ProductId=2
             },
             new Dimension
             {

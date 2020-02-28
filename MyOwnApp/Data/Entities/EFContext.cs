@@ -27,6 +27,10 @@ namespace MyOwnApp.Data.Entities
         public virtual DbSet<Dimension> Dimensions { get; set; }
         public virtual DbSet<ProductOrder> ProductOrders { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<SubCategory> SubCategories { get; set; }
+        public virtual DbSet<Likes> Likes { get; set; }
+        public virtual DbSet<Dislikes> Dislikes { get; set; }
+        public virtual DbSet<FileModel> FileModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

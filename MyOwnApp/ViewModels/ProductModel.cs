@@ -10,5 +10,6 @@ namespace MyOwnApp.ViewModels
     {
         public List<Producer> GetProducers { get; set; }
         public int ProducersCount { get; set; }
+        public Product Product { get; set; }
     }
 }

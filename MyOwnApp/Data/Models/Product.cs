@@ -22,8 +22,7 @@ namespace MyOwnApp.Data.Models
         public float Price { get; set; }
         public bool IsAdvertisingPaid { get; set; }
         public string Description { get; set; }
-        public int Likes { get; set; }
-        public int Dislikes { get; set; }
+       
         [ForeignKey("MaterialOf")]
         public int MaterialId { get; set; }
         [ForeignKey("ProductModelOf")]

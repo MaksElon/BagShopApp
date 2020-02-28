@@ -14,6 +14,7 @@ using MyOwnApp.Data.Entities;
 using MyOwnApp.Data.Interfaces;
 using MyOwnApp.Data.Models;
 using MyOwnApp.Models;
+using MyOwnApp.Services;
 using MyOwnApp.ViewModels;
 using Newtonsoft.Json;
 
@@ -25,15 +26,13 @@ namespace MyOwnApp.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly EFContext _context;
         private readonly IProducers _producers;
-        private readonly IEmailSender _emailSender;
         public AccountController(IProducers producers, UserManager<User> userManager, SignInManager<User> signInManager,
-        EFContext context, IEmailSender emailSender)
+        EFContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _producers = producers;
-            _emailSender = emailSender;
         }
         [HttpGet]
         public IActionResult ForgotPassword()
@@ -50,6 +49,29 @@ namespace MyOwnApp.Controllers
             ChangePasswordModel obj = new ChangePasswordModel();
             obj.GetProducers = _producers.GetProducers.ToList();
             obj.ProducersCount = _producers.GetProducers.Count();
+            var user = _context.Users.FirstOrDefault(u => u.Id == id);
+            return View(obj);
+        }
+        [HttpPost]
+        [Route("Account/ChangePassword/{id}")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model ,string id)
+        {
+            ChangePasswordModel obj = new ChangePasswordModel();
+            obj.GetProducers = _producers.GetProducers.ToList();
+            obj.ProducersCount = _producers.GetProducers.Count();
+            if (ModelState.IsValid)
+            {
+                var user = _context.Users.FirstOrDefault(u => u.Id == id);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "This user is not registered");
+                    return View(obj);
+                }
+                var hash_pass = _userManager.PasswordHasher.HashPassword(user, model.Password);
+                user.PasswordHash = hash_pass;
+                var result = await _userManager.UpdateAsync(user);
+                return RedirectToAction("AccountAction", "Account");
+            }
             return View(obj);
         }
         [HttpPost]
@@ -70,14 +92,27 @@ namespace MyOwnApp.Controllers
             }
             //var userName = user.UserProfile.FirstName +" "+ user.UserProfile.LastName;
             var userName = user.Email;
+            EmailService service = new EmailService();
+
             string url = "https://localhost:44398/Account/ChangePassword/" + user.Id;
-            await _emailSender.SendEmailAsync("masososon@gmail.com", "ForgotPassword",
+            await service.SendEmailAsync(model.Email, "ForgotPassword",
                 $"Dear {userName}," +
                 $"<br/>"+
                 $"To change your change your password"+
                 $"<br/>" +
                 $"click on this link <a href='{url}'>press</a>");
             
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public IActionResult AddFilesForm()
+        {
+            return View();
+        }
+        public async Task<IActionResult> AddFilesForm(IFormFile uploadedFile)
+        {
+            FileService service = new FileService();
+            await service.AddFile(uploadedFile);
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]

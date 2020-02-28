@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOwnApp.Data.Entities;
 
 namespace MyOwnApp.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20200226141002_add subcategories")]
+    partial class addsubcategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,44 +210,6 @@ namespace MyOwnApp.Migrations
                     b.ToTable("tbl_Dimentions");
                 });
 
-            modelBuilder.Entity("MyOwnApp.Data.Models.Dislikes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("tbl_Dislikes");
-                });
-
-            modelBuilder.Entity("MyOwnApp.Data.Models.Likes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("tbl_Likes");
-                });
-
             modelBuilder.Entity("MyOwnApp.Data.Models.Material", b =>
                 {
                     b.Property<int>("Id")
@@ -316,7 +280,11 @@ namespace MyOwnApp.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int>("Dislikes");
+
                     b.Property<bool>("IsAdvertisingPaid");
+
+                    b.Property<int>("Likes");
 
                     b.Property<int>("MaterialId");
 
@@ -499,30 +467,6 @@ namespace MyOwnApp.Migrations
                         .WithOne("DimensionOf")
                         .HasForeignKey("MyOwnApp.Data.Models.Dimension", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MyOwnApp.Data.Models.Dislikes", b =>
-                {
-                    b.HasOne("MyOwnApp.Data.Models.Product", "ProductOf")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyOwnApp.Data.Entities.User", "UserOf")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("MyOwnApp.Data.Models.Likes", b =>
-                {
-                    b.HasOne("MyOwnApp.Data.Models.Product", "ProductOf")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MyOwnApp.Data.Entities.User", "UserOf")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MyOwnApp.Data.Models.Product", b =>

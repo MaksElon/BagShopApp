@@ -12,25 +12,22 @@ namespace MyOwnApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUserProfiles _userProfiles;
         private readonly IProducts _products;
         private readonly IUsers _users;
         private readonly IProducers _producers;
-        private readonly IProductModels _productModels;
         private readonly IProductImages _productImages;
-        private readonly IMaterials _materials;
+        private readonly ITypeOfProducts _type;
         private readonly IDimensions _dimensions;
+        private readonly ISubCategories _subCategories;
 
-        public HomeController(IUserProfiles userProfiles, IDimensions dimensions, IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
+        public HomeController(ISubCategories subCategories,ITypeOfProducts type, IProducts products, IUsers users, IProducers producers, IProductImages productImages)
         {
             _products = products;
             _users = users;
             _producers = producers;
-            _productModels = productModels;
             _productImages = productImages;
-            _materials = materials;
-            _dimensions = dimensions;
-            _userProfiles = userProfiles;
+            _type = type;
+            _subCategories = subCategories;
         }
         public IActionResult Index()
         {
@@ -39,6 +36,10 @@ namespace MyOwnApp.Controllers
             obj.ProducersCount = _producers.GetProducers.Count();
             obj.GetRecommendedProducts = _products.GetProducts.ToList();
             obj.RecommendedProductsCount = 9;
+            obj.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            obj.TypeCount = _type.GetTypeOfProducts.Count();
+            obj.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            obj.SubCategoriesCount = _subCategories.GetSubCategories.Count();
             return View(obj);
         }
 

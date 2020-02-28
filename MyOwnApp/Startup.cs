@@ -53,7 +53,6 @@ namespace MyOwnApp
                     options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                 });
 
-            services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IProducts, ProductRepository>();
             services.AddTransient<IUsers, UserRepository>();
             services.AddTransient<IUserProfiles, UserProfileRepository>();
@@ -64,6 +63,7 @@ namespace MyOwnApp
             services.AddTransient<IMaterials, MaterialRepository>();
             services.AddTransient<IDimensions, DimensionRepository>();
             services.AddTransient<ITypeOfProducts, TypeOfProductRepository>();
+            services.AddTransient<ISubCategories, SubCategoryRepository>();
 
             services.AddMemoryCache();
             services.AddSession();

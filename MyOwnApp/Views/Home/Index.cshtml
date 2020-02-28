@@ -94,15 +94,17 @@
                     {
                         classUnder = "mainUnderBlack";
                     }
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, Model.ProducersCount-1);
                     <div class="AdvBlock"
-                         style="background-image: url(https://www.famousfootwear.com/c/-/media/project/famousfootwear/homepage/desktop/2019/fall/size-2/hp-banner-story2a.jpg?h=258&w=316&la=en&hash=2F565EDD9B394289BB253E819A4CBD19DCC7586A);">
+                         style="background-image: url('../images/@Model.GetProducers[randomNumber].ImageName')">
 
                         <div class="under @classUnder">
                             <h3>
-                                asdasd
+                                Check Out The @Model.GetProducers[randomNumber].Name
                             </h3>
                             <a href="#">
-                                <span>asdsadasdassd</span>
+                                <span>Shop in @Model.GetProducers[randomNumber].Name</span>
                             </a>
                         </div>
                     </div>

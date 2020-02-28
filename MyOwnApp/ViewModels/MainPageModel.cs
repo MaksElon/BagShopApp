@@ -12,5 +12,9 @@ namespace MyOwnApp.ViewModels
         public int ProducersCount { get; set; }
         public List<Product> GetRecommendedProducts { get; set; }
         public int RecommendedProductsCount { get; set; }
+        public List<SubCategory> GetSubCategories { get; set; }
+        public int SubCategoriesCount { get; set; }
+        public List<TypeOfProduct> GetTypeOfProducts { get; set; }
+        public int TypeCount { get; set; }
     }
 }

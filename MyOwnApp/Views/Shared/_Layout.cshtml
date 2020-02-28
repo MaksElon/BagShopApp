@@ -43,64 +43,33 @@
                                 <a class="nav-link" href="#">Women <span class="sr-only">(current)</span></a>
                                 <div class="dropdown-content">
                                     <div class="showFlex">
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Thanks & Complain</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Department</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Contacts</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Privacy & Cookies </a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
+                                        @{
+                                            int index=0;
+                                            for (int j = 0; j < 1; j++)
+                                            {
+                                                int count = 0;
+                                                <div class="tripleCol">
+                                                    <ul class="pl-0">
+                                                        <li>
+                                                            <h5>Women</h5>
+                                                        </li>
+                                                        @{
+                                                            while(count<5&&index!= Model.SubCategoriesCount)
+                                                            {
+                                                                if (Model.GetSubCategories[index].ProductTypeId == 1)
+                                                                {
+                                                                    <li>
+                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                    </li>
+                                                                    count += 1;
+                                                                }
+                                                                    index += 1;
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            } 
+                                         }
                                         <div class="tripleColImg">
                                             <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
                                         </div>
@@ -114,64 +83,33 @@
                                 <a class="nav-link " href="#">Men <span class="sr-only">(current)</span></a>
                                 <div class="dropdown-content">
                                     <div class="showFlex">
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Thanks & Complain</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Department</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Contacts</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Privacy & Cookies </a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
+                                        @{
+                                            index = 0;
+                                            for (int j = 0; j < 1; j++)
+                                            {
+                                                int count = 0;
+                                                <div class="tripleCol">
+                                                    <ul class="pl-0">
+                                                        <li>
+                                                            <h5>Men</h5>
+                                                        </li>
+                                                        @{
+                                                            while (count<5 && index != Model.SubCategoriesCount)
+                                                            {
+                                                                if (Model.GetSubCategories[index].ProductTypeId == 2)
+                                                                {
+                                                                    <li>
+                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                    </li>
+                                                                    count += 1;
+                                                                }
+                                                                    index += 1;
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                        }
                                         <div class="tripleColImg">
                                             <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
                                         </div>
@@ -184,44 +122,33 @@
                                 <a class="nav-link" href="#">Kids<span class="sr-only">(current)</span></a>
                                 <div class="dropdown-content">
                                     <div class="showFlex">
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        @{
+                                            index = 0;
+                                            for (int j = 0; j < 1; j++)//2
+                                            {
+                                                int count = 0;
+                                                <div class="tripleCol">
+                                                    <ul class="pl-0">
+                                                        <li>
+                                                            <h5>Kids</h5>
+                                                        </li>
+                                                        @{
+                                                            while (count<5 && index != Model.SubCategoriesCount)
+                                                            {
+                                                                if (Model.GetSubCategories[index].ProductTypeId == 3)
+                                                                {
+                                                                    <li>
+                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                    </li>
+                                                                    count += 1;
+                                                                }
+                                                                    index += 1;
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                        }
 
                                         <div class="tripleColImg">
                                             <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
@@ -235,44 +162,33 @@
                                 <a class="nav-link" href="#">Accessories<span class="sr-only">(current)</span></a>
                                 <div class="dropdown-content">
                                     <div class="showFlex">
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tripleCol">
-                                            <ul class="pl-0">
-                                                <li>
-                                                    <h5>ASsD</h5>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        @{
+                                            index = 0;
+                                            for (int j = 0; j <1; j++)//2
+                                            {
+                                                int count = 0;
+                                                <div class="tripleCol">
+                                                    <ul class="pl-0">
+                                                        <li>
+                                                            <h5>Accessories</h5>
+                                                        </li>
+                                                        @{
+                                                            while (count<5 && index != Model.SubCategoriesCount)
+                                                            {
+                                                                if (Model.GetSubCategories[index].ProductTypeId == 4)
+                                                                {
+                                                                    <li>
+                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                    </li>
+                                                                    count += 1;
+                                                                }
+                                                                    index += 1;
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                        }
 
                                         <div class="tripleColImg">
                                             <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
@@ -338,20 +254,17 @@
                                         <div class="tripleCol">
                                             <ul class="pl-0">
                                                 <li>
-                                                    <h5>ASsD</h5>
+                                                    <h5>Sale</h5>
                                                 </li>
-                                                <li>
-                                                    <a href="#">Home</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Doctors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">News</a>
-                                                </li>
+
+                                                @{
+                                                    for (int i = 0; i < Model.TypeCount; i++)
+                                                    {
+                                                        <li>
+                                                            <a href="#">@Model.GetTypeOfProducts[i].Name</a>
+                                                        </li>
+                                                    }
+                                                }
                                             </ul>
 
                                         </div>
