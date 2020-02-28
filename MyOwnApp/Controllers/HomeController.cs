@@ -17,8 +17,8 @@ namespace MyOwnApp.Controllers
         private readonly IProducers _producers;
         private readonly IProductImages _productImages;
         private readonly ITypeOfProducts _type;
-        private readonly IDimensions _dimensions;
         private readonly ISubCategories _subCategories;
+        private readonly IDimensions _dimensions;
 
         public HomeController(ISubCategories subCategories,ITypeOfProducts type, IProducts products, IUsers users, IProducers producers, IProductImages productImages)
         {
@@ -32,14 +32,16 @@ namespace MyOwnApp.Controllers
         public IActionResult Index()
         {
             MainPageModel obj = new MainPageModel();
-            obj.GetProducers = _producers.GetProducers.ToList();
-            obj.ProducersCount = _producers.GetProducers.Count();
             obj.GetRecommendedProducts = _products.GetProducts.ToList();
             obj.RecommendedProductsCount = 9;
-            obj.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            obj.TypeCount = _type.GetTypeOfProducts.Count();
-            obj.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            obj.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
             return View(obj);
         }
 

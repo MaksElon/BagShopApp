@@ -10,7 +10,7 @@ namespace MyOwnApp.ViewModels
     {
         public List<Product> GetProducts { get; set; }
         public int ProductsCount { get; set; }
-        public List<Producer> GetProducers { get; set; }
-        public int ProducersCount { get; set; }
+        public LayoutViewModel LayoutModel { get; set; }
+
     }
 }

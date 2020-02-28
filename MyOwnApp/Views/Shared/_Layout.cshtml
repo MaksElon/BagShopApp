@@ -54,12 +54,12 @@
                                                             <h5>Women</h5>
                                                         </li>
                                                         @{
-                                                            while(count<5&&index!= Model.SubCategoriesCount)
+                                                            while(count<5&&index!= Model.LayoutModel.SubCategoriesCount)
                                                             {
-                                                                if (Model.GetSubCategories[index].ProductTypeId == 1)
+                                                                if (Model.LayoutModel.GetSubCategories[index].ProductTypeId == 1)
                                                                 {
                                                                     <li>
-                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                        <a href="#">@Model.LayoutModel.GetSubCategories[index].Name</a>
                                                                     </li>
                                                                     count += 1;
                                                                 }
@@ -94,12 +94,12 @@
                                                             <h5>Men</h5>
                                                         </li>
                                                         @{
-                                                            while (count<5 && index != Model.SubCategoriesCount)
+                                                            while (count<5 && index != Model.LayoutModel.SubCategoriesCount)
                                                             {
-                                                                if (Model.GetSubCategories[index].ProductTypeId == 2)
+                                                                if (Model.LayoutModel.GetSubCategories[index].ProductTypeId == 2)
                                                                 {
                                                                     <li>
-                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                        <a href="#">@Model.LayoutModel.GetSubCategories[index].Name</a>
                                                                     </li>
                                                                     count += 1;
                                                                 }
@@ -133,12 +133,12 @@
                                                             <h5>Kids</h5>
                                                         </li>
                                                         @{
-                                                            while (count<5 && index != Model.SubCategoriesCount)
+                                                            while (count<5 && index != Model.LayoutModel.SubCategoriesCount)
                                                             {
-                                                                if (Model.GetSubCategories[index].ProductTypeId == 3)
+                                                                if (Model.LayoutModel.GetSubCategories[index].ProductTypeId == 3)
                                                                 {
                                                                     <li>
-                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                        <a href="#">@Model.LayoutModel.GetSubCategories[index].Name</a>
                                                                     </li>
                                                                     count += 1;
                                                                 }
@@ -173,12 +173,12 @@
                                                             <h5>Accessories</h5>
                                                         </li>
                                                         @{
-                                                            while (count<5 && index != Model.SubCategoriesCount)
+                                                            while (count<5 && index != Model.LayoutModel.SubCategoriesCount)
                                                             {
-                                                                if (Model.GetSubCategories[index].ProductTypeId == 4)
+                                                                if (Model.LayoutModel.GetSubCategories[index].ProductTypeId == 4)
                                                                 {
                                                                     <li>
-                                                                        <a href="#">@Model.GetSubCategories[index].Name</a>
+                                                                        <a href="#">@Model.LayoutModel.GetSubCategories[index].Name</a>
                                                                     </li>
                                                                     count += 1;
                                                                 }
@@ -203,8 +203,8 @@
                                 <div class="dropdown-content">
                                     <div class="container">
                                         @{
-                                            var producers = Model.GetProducers;
-                                            for (int i = 1; i <= Model.ProducersCount / 6; i++)
+                                            var producers = Model.LayoutModel.GetProducers;
+                                            for (int i = 1; i <= Model.LayoutModel.ProducersCount / 6; i++)
                                             {
 
                                                 <div class="row mt-4">
@@ -222,10 +222,10 @@
                                                 </div>
 
                                             }
-                                            if (Model.ProducersCount % 6 != 0)
+                                            if (Model.LayoutModel.ProducersCount % 6 != 0)
                                             {
                                                 <div class="row mt-4">
-                                                    @{ for (int i = Model.ProducersCount - Model.ProducersCount % 6; i < Model.ProducersCount; i++)
+                                                    @{ for (int i = Model.LayoutModel.ProducersCount - Model.LayoutModel.ProducersCount % 6; i < Model.LayoutModel.ProducersCount; i++)
                                                         {
                                                             <div class="card cardBrand">
                                                                 <div class="card-body">
@@ -258,10 +258,10 @@
                                                 </li>
 
                                                 @{
-                                                    for (int i = 0; i < Model.TypeCount; i++)
+                                                    for (int i = 0; i < Model.LayoutModel.TypeCount; i++)
                                                     {
                                                         <li>
-                                                            <a href="#">@Model.GetTypeOfProducts[i].Name</a>
+                                                            <a href="#">@Model.LayoutModel.GetTypeOfProducts[i].Name</a>
                                                         </li>
                                                     }
                                                 }

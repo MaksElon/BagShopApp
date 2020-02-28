@@ -8,8 +8,7 @@ namespace MyOwnApp.ViewModels
 {
     public class ProductModel
     {
-        public List<Producer> GetProducers { get; set; }
-        public int ProducersCount { get; set; }
+        public LayoutViewModel LayoutModel { get; set; }
         public Product Product { get; set; }
     }
 }

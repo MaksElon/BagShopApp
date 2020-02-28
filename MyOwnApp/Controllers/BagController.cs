@@ -22,7 +22,9 @@ namespace MyOwnApp.Controllers
         private readonly IMaterials _materials;
         private readonly IDimensions _dimensions;
         private readonly IOrders _orders;
-        public BagController(IOrders orders,IUserProfiles userProfiles,IDimensions dimensions,IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
+        private readonly ITypeOfProducts _type;
+        private readonly ISubCategories _subCategories;
+        public BagController(ITypeOfProducts type, ISubCategories subCategories, IOrders orders,IUserProfiles userProfiles,IDimensions dimensions,IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
         {
             _products = products;
             _users = users;
@@ -33,13 +35,21 @@ namespace MyOwnApp.Controllers
             _dimensions = dimensions;
             _userProfiles = userProfiles;
             _orders = orders;
+            _type = type;
+            _subCategories = subCategories;
         }
         public ViewResult GetMainPage()
         {
             
             MainPageModel obj = new MainPageModel();
-            obj.GetProducers = _producers.GetProducers.ToList();
-            obj.ProducersCount = _producers.GetProducers.Count();
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
             obj.GetRecommendedProducts = _products.GetProducts.ToList();
             obj.RecommendedProductsCount = 9;
             return View(obj);
@@ -48,8 +58,14 @@ namespace MyOwnApp.Controllers
         public ViewResult Catalog()
         {
             CatalogModel obj = new CatalogModel();
-            obj.GetProducers = _producers.GetProducers.ToList();
-            obj.ProducersCount = _producers.GetProducers.Count();
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
             obj.GetProducts = _products.GetProducts.ToList();
             obj.ProductsCount = _products.GetProducts.Count();
             return View(obj);
@@ -58,8 +74,14 @@ namespace MyOwnApp.Controllers
         public ViewResult Cart()
         {
             CartModel obj = new CartModel();
-            obj.GetProducers = _producers.GetProducers.ToList();
-            obj.ProducersCount = _producers.GetProducers.Count();
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
             obj.GetOrders = _orders.GetOrders.ToList();
             obj.OrdersCount = _orders.GetOrders.Count();
             return View(obj);
@@ -68,9 +90,15 @@ namespace MyOwnApp.Controllers
         public ViewResult Product()
         {
             ProductModel obj = new ProductModel();
-            obj.GetProducers = _producers.GetProducers.ToList();
-            obj.ProducersCount = _producers.GetProducers.Count();
-           
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
+
             return View(obj);
         }
     }

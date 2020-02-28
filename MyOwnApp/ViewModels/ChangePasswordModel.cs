@@ -20,7 +20,7 @@ namespace MyOwnApp.ViewModels
         [Display(Name = "Confirm password")]
         public string PasswordConfirm { get; set; }
 
-        public List<Producer> GetProducers { get; set; }
-        public int ProducersCount { get; set; }
+        public LayoutViewModel LayoutModel { get; set; }
+
     }
 }

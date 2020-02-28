@@ -10,8 +10,8 @@ namespace MyOwnApp.ViewModels
     {
         public LoginViewModel LoginViewModel { get; set; }
         public RegisterViewModel RegisterViewModel { get; set; }
-        public List<Producer> GetProducers { get; set; }
-        public int ProducersCount { get; set; }
+        public LayoutViewModel LayoutModel { get; set; }
+
     }
 
 }

@@ -9,7 +9,7 @@ namespace MyOwnApp.ViewModels
     public class ForgotPasswordModel
     {
         public string Email { get; set; }
-        public List<Producer> GetProducers { get; set; }
-        public int ProducersCount { get; set; }
+        public LayoutViewModel LayoutModel { get; set; }
+
     }
 }

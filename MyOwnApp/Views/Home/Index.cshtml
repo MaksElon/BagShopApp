@@ -95,16 +95,16 @@
                         classUnder = "mainUnderBlack";
                     }
                     Random random = new Random();
-                    int randomNumber = random.Next(0, Model.ProducersCount-1);
+                    int randomNumber = random.Next(0, Model.LayoutModel.ProducersCount-1);
                     <div class="AdvBlock"
-                         style="background-image: url('../images/@Model.GetProducers[randomNumber].ImageName')">
+                         style="background-image: url('../images/@Model.LayoutModel.GetProducers[randomNumber].ImageName')">
 
                         <div class="under @classUnder">
                             <h3>
-                                Check Out The @Model.GetProducers[randomNumber].Name
+                                Check Out The @Model.LayoutModel.GetProducers[randomNumber].Name
                             </h3>
                             <a href="#">
-                                <span>Shop in @Model.GetProducers[randomNumber].Name</span>
+                                <span>Shop in @Model.LayoutModel.GetProducers[randomNumber].Name</span>
                             </a>
                         </div>
                     </div>
