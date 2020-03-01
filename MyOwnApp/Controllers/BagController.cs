@@ -24,7 +24,9 @@ namespace MyOwnApp.Controllers
         private readonly IOrders _orders;
         private readonly ITypeOfProducts _type;
         private readonly ISubCategories _subCategories;
-        public BagController(ITypeOfProducts type, ISubCategories subCategories, IOrders orders,IUserProfiles userProfiles,IDimensions dimensions,IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
+        private readonly IProductOrders _productOrders;
+
+        public BagController(IProductOrders productOrders,ITypeOfProducts type, ISubCategories subCategories, IOrders orders, IUserProfiles userProfiles, IDimensions dimensions, IProducts products, IUsers users, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
         {
             _products = products;
             _users = users;
@@ -37,25 +39,11 @@ namespace MyOwnApp.Controllers
             _orders = orders;
             _type = type;
             _subCategories = subCategories;
+            _productOrders = productOrders;
         }
-        public ViewResult GetMainPage()
-        {
-            
-            MainPageModel obj = new MainPageModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-            obj.LayoutModel = layoutModel;
-            obj.GetRecommendedProducts = _products.GetProducts.ToList();
-            obj.RecommendedProductsCount = 9;
-            return View(obj);
-        }
+
         [HttpGet]
-        public ViewResult Catalog()
+        public IActionResult Catalog()
         {
             CatalogModel obj = new CatalogModel();
             LayoutViewModel layoutModel = new LayoutViewModel();
@@ -68,26 +56,39 @@ namespace MyOwnApp.Controllers
             obj.LayoutModel = layoutModel;
             obj.GetProducts = _products.GetProducts.ToList();
             obj.ProductsCount = _products.GetProducts.Count();
+            obj.GetProductImages = _productImages.GetProductImages.ToList();
+            obj.ProductImagesCount = _productImages.GetProductImages.Count();
             return View(obj);
         }
         [HttpGet]
-        public ViewResult Cart()
+        public IActionResult Cart()
         {
-            CartModel obj = new CartModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-            obj.LayoutModel = layoutModel;
-            obj.GetOrders = _orders.GetOrders.ToList();
-            obj.OrdersCount = _orders.GetOrders.Count();
-            return View(obj);
+            var info = HttpContext.Session.GetString("SessionUser");
+            if (info != null)
+            {
+                var result = JsonConvert.DeserializeObject<UserInfo>(info);
+
+                CartModel obj = new CartModel();
+                LayoutViewModel layoutModel = new LayoutViewModel();
+                layoutModel.GetProducers = _producers.GetProducers.ToList();
+                layoutModel.ProducersCount = _producers.GetProducers.Count();
+                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+                obj.LayoutModel = layoutModel;
+                var order = _orders.GetOrders.FirstOrDefault(o => o.UserId == result.UserId);
+                obj.GetOrder = order;
+                var prOr = _productOrders.GetProductOrders.Where(t => t.OrderId == order.Id).ToList();
+                obj.GetProducts = _products.GetProducts.Where(p => prOr.All(p2 => p2.ProductId == p.Id)).ToList();
+                obj.GetProductImages = _productImages.GetProductImages.ToList();
+                return View(obj);
+            }
+            return RedirectToAction("AccountAction", "Account");
         }
         [HttpGet]
-        public ViewResult Product()
+        [Route("Bag/Product/{id}")]
+        public IActionResult Product(int id)
         {
             ProductModel obj = new ProductModel();
             LayoutViewModel layoutModel = new LayoutViewModel();
@@ -98,7 +99,8 @@ namespace MyOwnApp.Controllers
             layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
             layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
             obj.LayoutModel = layoutModel;
-
+            obj.GetProduct = _products.GetProducts.FirstOrDefault(p => p.Id == id);
+            obj.GetProductImages = _productImages.GetProductImages.Where(t => t.ProductId == id).ToList();
             return View(obj);
         }
     }

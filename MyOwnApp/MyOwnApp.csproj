@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200229171323_connect orde.cs" />
+    <Compile Remove="Migrations\20200229171323_connect orde.Designer.cs" />
+    <Compile Remove="Migrations\20200229224453_ee.cs" />
+    <Compile Remove="Migrations\20200229224453_ee.Designer.cs" />
+    <Compile Remove="Migrations\20200301000920_delivery.cs" />
+    <Compile Remove="Migrations\20200301000920_delivery.Designer.cs" />
+    <Compile Remove="Migrations\20200301001425_deliver.cs" />
+    <Compile Remove="Migrations\20200301001425_deliver.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyOwnApp.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,12 +13,15 @@ namespace MyOwnApp.Data.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
         public bool Status { get; set; }
+        [ForeignKey("UserOf")]
+        public string UserId { get; set; }
+        [ForeignKey("DeliveryOf")]
+        public int DeliveryId { get; set; }
+
+        public virtual User UserOf { get; set; }
+        public virtual Delivery DeliveryOf { get; set; }
+
         public virtual ICollection<ProductOrder> ProductOrders{ get; set; }
     }
 }

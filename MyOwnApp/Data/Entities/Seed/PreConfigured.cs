@@ -212,17 +212,17 @@ namespace MyOwnApp.Data.Entities.Seed
                 await context.ProductImages.AddRangeAsync(new List<ProductImage>{
                 new ProductImage
                 {
-                    Name=env.WebRootPath+ @"\images\bag1.jfif",
+                    Name=/*env.WebRootPath+*/ "bag1.jfif",
                     ProductId=1
                 },
                 new ProductImage
                 {
-                    Name=env.WebRootPath+ @"\images\bag2.jfif",
+                    Name=/*env.WebRootPath+ */"bag2.jfif",
                     ProductId=2
                 },
                 new ProductImage
                 {
-                    Name=env.WebRootPath+ @"\images\bag3.jfif",
+                    Name=/*env.WebRootPath+ */"bag3.jfif",
                     ProductId=3
                 }
             

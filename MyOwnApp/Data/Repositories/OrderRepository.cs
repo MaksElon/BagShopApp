@@ -62,12 +62,7 @@ namespace MyOwnApp.Data.Repositories
         {
             try
             {
-                var temp = _context.Orders.FirstOrDefault(t => t.Id == id);
-                temp.Email = order.Email;
-                temp.Address = order.Address;
-                temp.FirstName = order.FirstName;
-                temp.LastName = order.LastName;
-                temp.Phone = order.Phone;
+                var temp = _context.Orders.FirstOrDefault(t => t.Id == id);                
                 temp.Status = order.Status;
                 _context.SaveChanges();
             }

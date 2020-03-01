@@ -57,6 +57,7 @@ namespace MyOwnApp
             services.AddTransient<IUsers, UserRepository>();
             services.AddTransient<IUserProfiles, UserProfileRepository>();
             services.AddTransient<IOrders, OrderRepository>();
+            services.AddTransient<IProductOrders, ProductOrderRepository>();
             services.AddTransient<IProducers, ProducerRepository>();
             services.AddTransient<IProductModels, ProductModelRepository>();
             services.AddTransient<IProductImages, ProductImageRepository>();
@@ -64,6 +65,7 @@ namespace MyOwnApp
             services.AddTransient<IDimensions, DimensionRepository>();
             services.AddTransient<ITypeOfProducts, TypeOfProductRepository>();
             services.AddTransient<ISubCategories, SubCategoryRepository>();
+            services.AddTransient<IDeliveries, DeliveryRepository>();
 
             services.AddMemoryCache();
             services.AddSession();

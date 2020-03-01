@@ -31,6 +31,7 @@ namespace MyOwnApp.Data.Entities
         public virtual DbSet<Likes> Likes { get; set; }
         public virtual DbSet<Dislikes> Dislikes { get; set; }
         public virtual DbSet<FileModel> FileModels { get; set; }
+        public virtual DbSet<Delivery> Deliveries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

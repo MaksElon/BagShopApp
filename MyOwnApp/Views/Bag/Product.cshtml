@@ -84,12 +84,12 @@
                     <!-- Product Image -->
                     <div class="col-lg-6">
                         <div class="details_image">
-                            <div class="details_image_large"><img src="~/images/details_1.jpg" alt=""></div>
+                            <div class="details_image_large"><img src="~/images/@Model.GetProductImages[1].Name" alt=""></div>
                             <div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
-                                <div class="details_image_thumbnail active" data-image="/images/details_1.jpg"><img src="~/images/details_1.jpg" alt=""></div>
-                                <div class="details_image_thumbnail" data-image="/images/details_2.jpg"><img src="~/images/details_2.jpg" alt=""></div>
-                                <div class="details_image_thumbnail" data-image="/images/details_3.jpg"><img src="~/images/details_3.jpg" alt=""></div>
-                                <div class="details_image_thumbnail" data-image="/images/details_4.jpg"><img src="~/images/details_4.jpg" alt=""></div>
+                                <div class="details_image_thumbnail active" data-image="/images/@Model.GetProductImages[1].Name"><img src="~/images/@Model.GetProductImages[1].Name" alt=""></div>
+                                <div class="details_image_thumbnail" data-image="/images/@Model.GetProductImages[2].Name"><img src="~/images/@Model.GetProductImages[2].Name" alt=""></div>
+                                <div class="details_image_thumbnail" data-image="/images/@Model.GetProductImages[3].Name"><img src="~/images/@Model.GetProductImages[3].Name" alt=""></div>
+                                <div class="details_image_thumbnail" data-image="/images/@Model.GetProductImages[4].Name"><img src="~/images/@Model.GetProductImages[4].Name" alt=""></div>
                             </div>
                         </div>
                     </div>
@@ -97,30 +97,54 @@
                     <!-- Product Content -->
                     <div class="col-lg-6">
                         <div class="details_content">
-                            <div class="details_name">Smart Phone</div>
-                            <div class="details_discount">$890</div>
-                            <div class="details_price">$670</div>
-
+                            <div class="details_name">@Model.GetProduct.Name</div>
+                            @{
+                                if (Model.GetProduct.SalePercent != 0)
+                                {<div class="details_discount">$@Model.GetProduct.Price</div>}
+                            }
+                            @{
+                                var pr = Model.GetProduct.Price - (Model.GetProduct.Price / 100 * Model.GetProduct.SalePercent);
+                                <div class="details_price">$@pr</div>
+                            }
                             <!-- In Stock -->
                             <div class="in_stock_container">
                                 <div class="availability">Availability:</div>
-                                <span>In Stock</span>
+                                @{
+                                    if (@Model.GetProduct.AvailableCount > 0)
+                                    {
+                                        <span>In Stock</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Not In Stock</span>
+                                    }
+                                }
                             </div>
                             <div class="details_text">
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+                                <p>@Model.GetProduct.Description</p>
                             </div>
 
                             <!-- Product Quantity -->
                             <div class="product_quantity_container">
-                                <div class="product_quantity clearfix">
+                                @*<div class="product_quantity clearfix">
                                     <span>Qty</span>
                                     <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
                                     <div class="quantity_buttons">
                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
                                         <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
                                     </div>
-                                </div>
-                                <div class="button cart_button"><a href="#">Add to cart</a></div>
+                                </div>*@
+                                @{
+                                    if (@Model.GetProduct.AvailableCount > 0)
+                                    {
+                                        <div class="button cart_button" id="btnBuy"><a href="#">Add to cart</a></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="button cart_button " id="btnBuy"><a href="#" class="disabled">Add to cart</a></div>
+                                    }
+
+                                }
                             </div>
 
                             <!-- Share -->
@@ -144,7 +168,7 @@
                             <div class="reviews_title"><a href="#">Reviews <span>(1)</span></a></div>
                         </div>
                         <div class="description_text">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+                            <p>@Model.GetProduct.Description</p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +178,6 @@
 
 
     </div>
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

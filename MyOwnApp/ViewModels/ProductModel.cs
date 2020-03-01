@@ -9,6 +9,7 @@ namespace MyOwnApp.ViewModels
     public class ProductModel
     {
         public LayoutViewModel LayoutModel { get; set; }
-        public Product Product { get; set; }
+        public Product GetProduct { get; set; }
+        public List<ProductImage> GetProductImages { get; set; }
     }
 }

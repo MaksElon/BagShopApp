@@ -9,7 +9,8 @@ namespace MyOwnApp.ViewModels
     public class CartModel
     {
         public LayoutViewModel LayoutModel { get; set; }
-        public List<Order> GetOrders { get; set; }
-        public int OrdersCount { get; set; }
+        public Order GetOrder { get; set; }
+        public List<ProductImage> GetProductImages { get; set; }
+        public List<Product> GetProducts { get; set; }
     }
 }

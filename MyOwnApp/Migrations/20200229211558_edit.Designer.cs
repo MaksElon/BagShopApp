@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyOwnApp.Data.Entities;
 
 namespace MyOwnApp.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20200229211558_edit")]
+    partial class edit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,21 +186,6 @@ namespace MyOwnApp.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("MyOwnApp.Data.Models.Delivery", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.Property<float>("Price");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tbl_Deliveries");
-                });
-
             modelBuilder.Entity("MyOwnApp.Data.Models.Dimension", b =>
                 {
                     b.Property<int>("Id")
@@ -295,15 +282,11 @@ namespace MyOwnApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DeliveryId");
-
                     b.Property<bool>("Status");
 
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DeliveryId");
 
                     b.HasIndex("UserId");
 
@@ -556,11 +539,6 @@ namespace MyOwnApp.Migrations
 
             modelBuilder.Entity("MyOwnApp.Data.Models.Order", b =>
                 {
-                    b.HasOne("MyOwnApp.Data.Models.Delivery", "DeliveryOf")
-                        .WithMany("Orders")
-                        .HasForeignKey("DeliveryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("MyOwnApp.Data.Entities.User", "UserOf")
                         .WithMany("Orders")
                         .HasForeignKey("UserId");

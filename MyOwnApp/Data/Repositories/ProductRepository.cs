@@ -68,6 +68,7 @@ namespace MyOwnApp.Data.Repositories
                 temp.SalePercent = product.SalePercent;
                 temp.Article = product.Article;
                 temp.Color = product.Color;
+                temp.AvailableCount = product.AvailableCount;
                 temp.IsAdvertisingPaid = product.IsAdvertisingPaid;
                 temp.Description = product.Description;
                 _context.SaveChanges();

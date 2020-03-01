@@ -14,6 +14,6 @@ namespace MyOwnApp.Data.Entities
     {
         public IEnumerable<UserRole> UserRoles { get; set; }
         public virtual UserProfile UserProfile { get; set; }
-        
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

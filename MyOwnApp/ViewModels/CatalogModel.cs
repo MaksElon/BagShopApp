@@ -11,6 +11,8 @@ namespace MyOwnApp.ViewModels
         public List<Product> GetProducts { get; set; }
         public int ProductsCount { get; set; }
         public LayoutViewModel LayoutModel { get; set; }
+        public List<ProductImage> GetProductImages { get; set; }
+        public int ProductImagesCount { get; set; }
 
     }
 }

@@ -2,7 +2,6 @@
 @{
     Layout = "_Layout";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -37,174 +36,46 @@
                 </select>
 
             </div>
-            <div class="mr-0 row row-cols-1 row-cols-md-2">
-                <div class="col">
-                    <div class="card cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib95135.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                33$
-                            </p>
-                            <p hidden="true" class="card-text oldPrice">40$</p>
+            @{
+                for (int i = 1; i <= Model.ProductsCount / 5; i++)
+                {
+                    <div class="mr-0 row row-cols-1 row-cols-md-2">
+                        @{
+                            for (int j = 0; j < 5; j++)
+                            {
+                                var prodc = Model.GetProducts[j * i].ProducerOf.Name;
+                                var newPr = Model.GetProducts[j * i].Price - (Model.GetProducts[j * i].Price / 100 * Model.GetProducts[j * i].SalePercent);
+                                string imgPath="";
+                                foreach(var item in Model.GetProductImages)
+                                {
+                                    if (item.ProductId == Model.GetProducts[j * i].Id)
+                                    {
+                                        imgPath = item.Name;
+                                        break;
+                                    }
+                                }
+                                <div class="col">
+                                    <div class="card cardList">
+                                        <img src="~/images/@imgPath"
+                                             class="card-img-top imgRecommend">
+                                        <div itemprop="text" class="card-body">
+                                            <h5 class="card-title">@prodc</h5>
+                                            <p class="card-text"><small class="text-muted">@Model.GetProducts[j * i].Name</small></p>
+                                            <hr>
+                                            <p class="card-text price">
+                                                @newPr$
+                                            </p>
+                                            <p hidden="true" class="card-text oldPrice">@Model.GetProducts[j * i].Price$</p>
 
-                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                99$
-                            </p>
-                            <p hidden="true" class="card-text oldPrice">40$</p>
+                }
+            }
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                99$
-                            </p>
-                            <p hidden="true" class="card-text oldPrice">40$</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card  cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Under armour</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                23$
-                            </p>
-                            <p class="card-text oldPrice">40$</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card  cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib73711.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">49$</p>
-                            <p class="card-text oldPrice">40$</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mr-0 row row-cols-1 row-cols-md-2">
-                <div class="col">
-                    <div class="card cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib95135.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                33$
-                            </p>
-                            <p hidden="true" class="card-text oldPrice">40$</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                99$
-                            </p>
-                            <p hidden="true" class="card-text oldPrice">40$</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                99$
-                            </p>
-                            <p hidden="true" class="card-text oldPrice">40$</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card  cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib29456.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Under armour</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">
-                                23$
-                            </p>
-                            <p class="card-text oldPrice">40$</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card  cardList">
-                        <img itemprop="image" alt="doctors"
-                             src="https://www.famousfootwear.com/productimages/shoes_ib73711.jpg?trim.threshold=105&height=160&width=160&anchor=bottomCenter"
-                             class="card-img-top imgRecommend">
-                        <div itemprop="text" class="card-body">
-                            <h5 class="card-title">Nike</h5>
-                            <p class="card-text"><small class="text-muted">abracadabra</small></p>
-                            <hr>
-                            <p class="card-text price">49$</p>
-                            <p class="card-text oldPrice">40$</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="paginationForm">
                 <div class="containerU">
                     <ul id="pagUl">

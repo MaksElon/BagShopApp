@@ -11,5 +11,8 @@ namespace MyOwnApp.ComponentModels
         public IEnumerable<TypeOfProduct> TypeOfProducts { get; set; }
         public IEnumerable<Material> Materials { get; set; }
         public IEnumerable<ProductModel> ProductModels { get; set; }
+        public IEnumerable<Producer> Producers { get; set; }
+        public int MaxPrice { get; set; }
+        public int MinPrice { get; set; }
     }
 }
