@@ -45,8 +45,8 @@
                             {
                                 var prodc = Model.GetProducts[j * i].ProducerOf.Name;
                                 var newPr = Model.GetProducts[j * i].Price - (Model.GetProducts[j * i].Price / 100 * Model.GetProducts[j * i].SalePercent);
-                                string imgPath="";
-                                foreach(var item in Model.GetProductImages)
+                                string imgPath = "";
+                                foreach (var item in Model.GetProductImages)
                                 {
                                     if (item.ProductId == Model.GetProducts[j * i].Id)
                                     {
@@ -55,20 +55,22 @@
                                     }
                                 }
                                 <div class="col">
-                                    <div class="card cardList">
-                                        <img src="~/images/@imgPath"
-                                             class="card-img-top imgRecommend">
-                                        <div itemprop="text" class="card-body">
-                                            <h5 class="card-title">@prodc</h5>
-                                            <p class="card-text"><small class="text-muted">@Model.GetProducts[j * i].Name</small></p>
-                                            <hr>
-                                            <p class="card-text price">
-                                                @newPr$
-                                            </p>
-                                            <p hidden="true" class="card-text oldPrice">@Model.GetProducts[j * i].Price$</p>
+                                    <a class="CardA" asp-controller="Bag" asp-action="Product" asp-route-id="@Model.GetProducts[j * i].Id">
+                                        <div class="card cardList">
+                                            <img src="~/images/@imgPath"
+                                                 class="card-img-top imgRecommend">
+                                            <div itemprop="text" class="card-body">
+                                                <h5 class="card-title">@prodc</h5>
+                                                <p class="card-text"><small class="text-muted">@Model.GetProducts[j * i].Name</small></p>
+                                                <hr>
+                                                <p class="card-text price">
+                                                    @newPr$
+                                                </p>
+                                                <p hidden="true" class="card-text oldPrice">@Model.GetProducts[j * i].Price$</p>
 
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             }
                         }

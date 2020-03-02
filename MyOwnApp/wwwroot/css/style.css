@@ -442,3 +442,13 @@ h1,h2 {
 .Myactive {
     color: #027AF9 !important;
 }
+.CardA {
+    color: inherit;
+    text-decoration: none;
+}
+
+    .CardA:hover {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+    }
