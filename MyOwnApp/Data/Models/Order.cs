@@ -14,11 +14,11 @@ namespace MyOwnApp.Data.Models
         [Key]
         public int Id { get; set; }
         public bool Status { get; set; }
+        public DateTime DateOfOrder { get; set; }
         [ForeignKey("UserOf")]
         public string UserId { get; set; }
         [ForeignKey("DeliveryOf")]
         public int DeliveryId { get; set; }
-
         public virtual User UserOf { get; set; }
         public virtual Delivery DeliveryOf { get; set; }
 

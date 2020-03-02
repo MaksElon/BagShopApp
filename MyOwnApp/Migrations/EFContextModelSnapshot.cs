@@ -295,6 +295,8 @@ namespace MyOwnApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DateOfOrder");
+
                     b.Property<int>("DeliveryId");
 
                     b.Property<bool>("Status");

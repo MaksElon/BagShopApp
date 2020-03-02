@@ -64,6 +64,7 @@ namespace MyOwnApp.Data.Repositories
             {
                 var temp = _context.Orders.FirstOrDefault(t => t.Id == id);                
                 temp.Status = order.Status;
+                temp.DateOfOrder = order.DateOfOrder;
                 _context.SaveChanges();
             }
             catch (Exception)
