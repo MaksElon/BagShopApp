@@ -254,7 +254,7 @@ WriteAttributeValue("", 2940, Model.MaxPrice, 2940, 15, false);
             WriteLiteral("    </div>\r\n    ");
             EndContext();
             BeginContext(3012, 340, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aaca98f393e74bce8b92fb0185a3c50f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "26f6fa1a062c40108df1b36655212cfb", async() => {
                 BeginContext(3039, 123, true);
                 WriteLiteral("\r\n        <input class=\"chosen-value\" type=\"text\" value=\"\" placeholder=\"Type to filter\">\r\n        <ul class=\"value-list\">\r\n");
                 EndContext();

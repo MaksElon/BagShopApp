@@ -24,57 +24,6 @@
     <div class="super_container">
 
         <!-- Menu -->
-
-        <div class="menu menu_mm trans_300">
-            <div class="menu_container menu_mm">
-                <div class="page_menu_content">
-
-                    <div class="page_menu_search menu_mm">
-                        <form action="#">
-                            <input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
-                        </form>
-                    </div>
-                    <ul class="page_menu_nav menu_mm">
-                        <li class="page_menu_item has-children menu_mm">
-                            <a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection menu_mm">
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item has-children menu_mm">
-                            <a href="categories.html">Categories<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection menu_mm">
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item menu_mm"><a href="index.html">Accessories<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm"><a href="#">Offers<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-
-            <div class="menu_social">
-                <ul>
-                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-        </div>
-
-
-
         <!-- Product Details -->
 
         <div class="product_details">
@@ -121,40 +70,76 @@
                                 }
                             </div>
                             <div class="details_text">
-                                <p>@Model.GetProduct.Description</p>
+                                <p>
+                                    Material: @Model.Material.Name<br />
+                                    @Model.Type.Name
+                                    @Model.Model.Name<br />
+                                    @Model.GetProduct.Color color<br />
+                                    Height: @Model.Dimension.Height<br />
+                                    Width: @Model.Dimension.Width<br />
+                                    Bottom width: @Model.Dimension.BottomWidth<br />
+                                    HandleLength: @Model.Dimension.HandleLength<br />
+
+                                </p>
                             </div>
 
                             <!-- Product Quantity -->
                             <div class="product_quantity_container">
                                 @*<div class="product_quantity clearfix">
-                                    <span>Qty</span>
-                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
-                                    </div>
-                                </div>*@
+                                        <span>Qty</span>
+                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                        <div class="quantity_buttons">
+                                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>*@
                                 @{
                                     if (@Model.GetProduct.AvailableCount > 0)
                                     {
-                                        <div class="button cart_button" id="btnBuy"><a href="#">Add to cart</a></div>
+                                        <div class="ml-0 button cart_button" id="btnBuy"><a href="#">Add to cart</a></div>
                                     }
                                     else
                                     {
-                                        <div class="button cart_button " id="btnBuy"><a href="#" class="disabled">Add to cart</a></div>
+                                        <div class="ml-0 button cart_button disabled" id="btnBuy"><a href="#">Add to cart</a></div>
                                     }
 
                                 }
+                                @{
+
+                                    if (Model.AlreadyLiked)
+                                    {
+                                        <div class="mt-5">
+                                            <a id="btnLike" class="disabled mr-3"><i class="fas fa-thumbs-up fa-lg Myactive">  @Model.LikesCount</i></a>
+                                            <a id="btnDislike" class="disabled"><i class="fas fa-thumbs-down fa-lg">  @Model.DislikesCount</i></a>
+                                        </div>
+                                    }
+                                    else if (Model.AlreadyDisliked)
+                                    {
+                                        <div class="mt-5">
+                                            <a id="btnLike" class="disabled mr-3"><i class="fas fa-thumbs-up fa-lg">  @Model.LikesCount</i></a>
+                                            <a id="btnDislike" class="disabled"><i class="fas fa-thumbs-down fa-lg Myactive">  @Model.DislikesCount</i></a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="mt-5">
+                                            <a asp-controller="Bag" asp-action="Liked" asp-route-id="@Model.GetProduct.Id" class="mr-3" id="btnLike"><i class="fas fa-thumbs-up fa-lg">@Model.LikesCount</i></a>
+                                            <a asp-controller="Bag" asp-action="Disliked" asp-route-id="@Model.GetProduct.Id" id="btnDislike"><i class="fas fa-thumbs-down fa-lg">@Model.DislikesCount</i></a>
+                                        </div>
+                                    }
+                                }
+
+
                             </div>
 
                             <!-- Share -->
                             <div class="details_share">
                                 <span>Share:</span>
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </div>

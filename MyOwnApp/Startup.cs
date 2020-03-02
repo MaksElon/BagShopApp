@@ -66,6 +66,8 @@ namespace MyOwnApp
             services.AddTransient<ITypeOfProducts, TypeOfProductRepository>();
             services.AddTransient<ISubCategories, SubCategoryRepository>();
             services.AddTransient<IDeliveries, DeliveryRepository>();
+            services.AddTransient<ILikes, LikeRepository>();
+            services.AddTransient<IDislikes, DislikeRepository>();
 
             services.AddMemoryCache();
             services.AddSession();

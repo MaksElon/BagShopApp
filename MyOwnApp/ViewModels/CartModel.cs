@@ -12,5 +12,6 @@ namespace MyOwnApp.ViewModels
         public Order GetOrder { get; set; }
         public List<ProductImage> GetProductImages { get; set; }
         public List<Product> GetProducts { get; set; }
+        public List<Delivery> GetDeliveries { get; set; }
     }
 }
