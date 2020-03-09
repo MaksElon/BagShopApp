@@ -1,0 +1,200 @@
+﻿
+@{
+    Layout = null;
+}
+@model MyOwnApp.ViewModels.AdminFChartModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminFirstChart</title>
+    <link href="~/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="~/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link rel="stylesheet" href="~/css/sideStyle.css">
+    <link href="~/css/theme.css" rel="stylesheet" media="all">
+</head>
+<body class="animsition">
+    <div class="page-wrapper">
+
+        <div class="wrapper d-flex align-items-stretch">
+            <nav id="sidebar">
+                <div class="custom-menu">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                </div>
+                <h1><a href="index.html" class="logo">Project Name</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li >
+                        <a asp-action="AdminPage" asp-controller="Admin"><span class="fa fa-home mr-3"></span> In General</a>
+                    </li>
+                    <li class="active">
+                        <a href="#"><span class="fa fa-user mr-3"></span> Current year</a>
+                    </li>
+                    <li>
+                        <a asp-action="AdminSecondChart" asp-controller="Admin"><span class="fa fa-sticky-note mr-3"></span> Each year </a>
+                    </li>
+                    <li>
+                        <a asp-action="AdminProducts" asp-controller="Admin"><span class="fa fa-sticky-note mr-3"></span> Products</a>
+                    </li>
+                    <li>
+                        <a asp-action="AdminOrders" asp-controller="Admin"><span class="fa fa-paper-plane mr-3"></span> Orders</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+
+                <!-- PAGE CONTENT-->
+                <div class="page-content--bgf7">
+
+
+                    <!-- WELCOME-->
+                    <section class="welcome p-t-10">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1 class="title-4">
+                                        Welcome back
+                                        <span>@Model.AdminName!</span>
+                                    </h1>
+                                    <hr class="line-seprate">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- END WELCOME-->
+                    <!-- STATISTIC CHART-->
+                    <section class="statistic-chart">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="title-5 m-b-35">statistics</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <div class="col-md-6 col-lg-4"> -->
+                                <div class="col-md-12 col-lg-12">
+                                    <!-- CHART-->
+                                    <div class="statistic-chart-1">
+                                        <h3 class="title-3 m-b-30">chart</h3>
+                                        <div class="chart-wrap">
+                                            <!-- grafic point -->
+                                            <canvas id="myLineChart"></canvas>
+                                        </div>
+                                        <div class="statistic-chart-1-note">
+                                            <span class="big">10,368</span>
+                                            <span>/ 16220 items sold</span>
+                                        </div>
+                                    </div>
+                                    <!-- END CHART-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <!-- END STATISTIC CHART-->
+                    <!-- COPYRIGHT-->
+                    <section class="p-t-60 p-b-20">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="copyright">
+                                        <p>Copyright © 2018. All rights reserved. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- END COPYRIGHT-->
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/vendor/slick/slick.min.js"></script>
+    <script src="~/vendor/wow/wow.min.js"></script>
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!-- Main JS-->
+    <script src="~/js/main.js"></script>
+    <script src="~/js/sideJs.js"></script>
+
+    <script>
+        var myLineChart = new Chart(document.getElementById("myLineChart"), {
+            type: 'line',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"],
+                datasets: [{
+                    label: "My First ",
+                    data: [@Model.ChartValue[0], @Model.ChartValue[1],@Model.ChartValue[2], @Model.ChartValue[3],
+                        @Model.ChartValue[4], @Model.ChartValue[5], @Model.ChartValue[6],@Model.ChartValue[7], @Model.ChartValue[8],
+                        @Model.ChartValue[9], @Model.ChartValue[10], @Model.ChartValue[11]],
+                    backgroundColor: [
+                        'rgba(36, 116, 36, .7)',
+                    ],
+                    borderColor: [
+                        'rgba(7, 5, 30, .7)',
+                    ],
+                    pointHoverBackgroundColor: [
+                        'rgba(36, 116, 36, .7)',
+                        'rgba(36, 116, 36, .7)',
+                        'rgba(36, 116, 36, .7)',
+                        'rgba(36, 116, 36, .7)',
+                    ],
+                    pointHoverBorderColor: [
+                        'rgba(7, 5, 30, .7)',
+                        'rgba(7, 5, 30, .7)',
+                        'rgba(7, 5, 30, .7)',
+                        'rgba(7, 5, 30, .7)',
+                    ],
+
+                    borderWidth: 2
+                },
+
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+</body>
+</html>

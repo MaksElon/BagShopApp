@@ -48,29 +48,14 @@ namespace MyOwnApp.Controllers
             _env = env;
         }
         [HttpGet]
-        public IActionResult AdminPage()
+        public IActionResult AdminOrders()
         {
             var info = HttpContext.Session.GetString("SessionUser");
             if (info != null)
             {
                 var result = JsonConvert.DeserializeObject<UserInfo>(info);
 
-
-                AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
-                obj.AddDimensionModel = new AddDimensionModel();
-                obj.AddTypeModel = new AddTypeModel();
-                obj.AddProductModel = new AddProductModel();
-                obj.AddProducerModel = new AddProducerModel();
-                obj.AddModelModel = new AddModelModel();
-                obj.AddMaterialModel = new AddMaterialModel();
+                AdminOrdersModel obj = new AdminOrdersModel();
                 var tempU = _users.GetUsers.FirstOrDefault(t => t.Id == result.UserId);
                 obj.AdminName = _userProfiles.GetUserProfiles.FirstOrDefault(t => t.User == tempU).FirstName;
                 List<AdminOrder> listOrders = new List<AdminOrder>();
@@ -98,7 +83,31 @@ namespace MyOwnApp.Controllers
                         }
                     }
                 }
+
                 obj.Orders = listOrders;//todo order by date
+                return View(obj);
+            }
+            return RedirectToAction("AccountAction", "Account");
+
+        }
+        [HttpGet]
+        public IActionResult AdminProducts()
+        {
+            var info = HttpContext.Session.GetString("SessionUser");
+            if (info != null)
+            {
+                var result = JsonConvert.DeserializeObject<UserInfo>(info);
+
+
+                AdminProductsModel obj = new AdminProductsModel();
+                obj.AddDimensionModel = new AddDimensionModel();
+                obj.AddTypeModel = new AddTypeModel();
+                obj.AddProductModel = new AddProductModel();
+                obj.AddProducerModel = new AddProducerModel();
+                obj.AddModelModel = new AddModelModel();
+                obj.AddMaterialModel = new AddMaterialModel();
+                var tempU = _users.GetUsers.FirstOrDefault(t => t.Id == result.UserId);
+                obj.AdminName = _userProfiles.GetUserProfiles.FirstOrDefault(t => t.User == tempU).FirstName;
                 List<AdminProduct> adminProducts = new List<AdminProduct>();
                 foreach (var item in _products.GetProducts)
                 {
@@ -123,6 +132,107 @@ namespace MyOwnApp.Controllers
                     adminProducts.Add(admProd);
                 }
                 obj.Products = adminProducts;
+                return View(obj);
+
+            }
+            return RedirectToAction("AccountAction", "Account");
+
+        }
+        [HttpGet]
+        public IActionResult AdminFirstChart()
+        {
+            var info = HttpContext.Session.GetString("SessionUser");
+            if (info != null)
+            {
+                var result = JsonConvert.DeserializeObject<UserInfo>(info);
+
+                AdminFChartModel obj = new AdminFChartModel();
+                var tempU = _users.GetUsers.FirstOrDefault(t => t.Id == result.UserId);
+                obj.AdminName = _userProfiles.GetUserProfiles.FirstOrDefault(t => t.User == tempU).FirstName;
+                List<int> monthProfits = new List<int>();
+                for (int i = 0; i < 12; i++)
+                {
+                    var monthOrders = _orders.GetOrders.Where(t => t.DateOfOrder.Month == i + 1 && t.DateOfOrder.Year == DateTime.Today.Year);
+                    monthProfits.Add(0);
+                    foreach (var item in monthOrders)
+                    {
+                        var monthProductsOrders = _productOrders.GetProductOrders.Where(t => t.OrderId == item.Id);
+                        if (monthProductsOrders != null)
+                        {
+                            var res = _products.GetProducts.Where(prod => monthProductsOrders.Select(o => o.ProductId).Any(t => t == prod.Id));
+                            if (res != null)
+                            {
+                                monthProfits[i] = (Convert.ToInt32(res.Select(t => t.Price).Sum()));
+                            }
+                        }
+                    }
+                }
+                obj.ChartValue = monthProfits;
+                return View(obj);
+
+            }
+            return RedirectToAction("AccountAction", "Account");
+
+        }
+        [HttpGet]
+        public IActionResult AdminSecondChart()
+        {
+            var info = HttpContext.Session.GetString("SessionUser");
+            if (info != null)
+            {
+                var result = JsonConvert.DeserializeObject<UserInfo>(info);
+
+                AdminSChartModel obj = new AdminSChartModel();
+                var tempU = _users.GetUsers.FirstOrDefault(t => t.Id == result.UserId);
+                obj.AdminName = _userProfiles.GetUserProfiles.FirstOrDefault(t => t.User == tempU).FirstName;
+                List<AdminYearChartType> yearChartTypes = new List<AdminYearChartType>();
+                int early = _orders.GetOrders.Max(t => t.DateOfOrder).Year;
+                for (int y = DateTime.Today.Year; y >= early; y--)
+                {
+                    AdminYearChartType adminType = new AdminYearChartType();
+                    adminType.Year = y.ToString();
+                    List<int> tempProfits = new List<int>();
+                    for (int i = 0; i < 12; i++)
+                    {
+                        var monthOrders = _orders.GetOrders.Where(t => t.DateOfOrder.Month == i + 1 && t.DateOfOrder.Year == y);
+                        tempProfits.Add(0);
+                        foreach (var item in monthOrders)
+                        {
+                            var monthProductsOrders = _productOrders.GetProductOrders.Where(t => t.OrderId == item.Id);
+                            if (monthProductsOrders != null)
+                            {
+                                var res = _products.GetProducts.Where(prod => monthProductsOrders.Select(o => o.ProductId).Any(t => t == prod.Id));
+                                if (res != null)
+                                {
+                                    tempProfits[i] = (Convert.ToInt32(res.Select(t => t.Price).Sum()));
+                                }
+                            }
+                        }
+                    }
+                    adminType.ChartValue = tempProfits;
+                    yearChartTypes.Add(adminType);
+                }
+                obj.ChartYearTypes = yearChartTypes;
+                return View(obj);
+            }
+            return RedirectToAction("AccountAction", "Account");
+
+        }
+        [HttpGet]
+        public IActionResult AdminPage()
+        {
+            var info = HttpContext.Session.GetString("SessionUser");
+            if (info != null)
+            {
+                var result = JsonConvert.DeserializeObject<UserInfo>(info);
+
+
+                AdminModel obj = new AdminModel();
+
+                var tempU = _users.GetUsers.FirstOrDefault(t => t.Id == result.UserId);
+                obj.AdminName = _userProfiles.GetUserProfiles.FirstOrDefault(t => t.User == tempU).FirstName;
+                
+                
                 obj.OnlineUsers = 1;//todo
                 List<AdminChartType> types = new List<AdminChartType>();
                 foreach (var type in _type.GetTypeOfProducts)
@@ -169,53 +279,8 @@ namespace MyOwnApp.Controllers
                 obj.WeekSold = weekCount;
                 obj.WeekSold = weekSumm;
 
-                List<int> monthProfits = new List<int>();
-                for (int i = 0; i < 12; i++)
-                {
-                    var monthOrders = _orders.GetOrders.Where(t => t.DateOfOrder.Month == i + 1 && t.DateOfOrder.Year == DateTime.Today.Year);
-                    monthProfits.Add(0);
-                    foreach (var item in monthOrders)
-                    {
-                        var monthProductsOrders = _productOrders.GetProductOrders.Where(t => t.OrderId == item.Id);
-                        if (monthProductsOrders != null)
-                        {
-                            var res = _products.GetProducts.Where(prod => monthProductsOrders.Select(o => o.ProductId).Any(t => t == prod.Id));
-                            if (res != null)
-                            {
-                                monthProfits[i] = (Convert.ToInt32(res.Select(t => t.Price).Sum()));
-                            }
-                        }
-                    }
-                }
-                obj.ChartValue = monthProfits;
-                List<AdminYearChartType> yearChartTypes = new List<AdminYearChartType>();
-                int early = _orders.GetOrders.Max(t => t.DateOfOrder).Year;
-                for (int y = DateTime.Today.Year; y >= early; y--)
-                {
-                    AdminYearChartType adminType = new AdminYearChartType();
-                    adminType.Year = y.ToString();
-                    List<int> tempProfits = new List<int>();
-                    for (int i = 0; i < 12; i++)
-                    {
-                        var monthOrders = _orders.GetOrders.Where(t => t.DateOfOrder.Month == i + 1 && t.DateOfOrder.Year == y);
-                        tempProfits.Add(0);
-                        foreach (var item in monthOrders)
-                        {
-                            var monthProductsOrders = _productOrders.GetProductOrders.Where(t => t.OrderId == item.Id);
-                            if (monthProductsOrders != null)
-                            {
-                                var res = _products.GetProducts.Where(prod => monthProductsOrders.Select(o => o.ProductId).Any(t => t == prod.Id));
-                                if (res != null)
-                                {
-                                    tempProfits[i] = (Convert.ToInt32(res.Select(t => t.Price).Sum()));
-                                }
-                            }
-                        }
-                    }
-                    adminType.ChartValue = tempProfits;
-                    yearChartTypes.Add(adminType);
-                }
-                obj.ChartYearTypes = yearChartTypes;
+                
+                
                 List<AdminProducersTable> producersTable = new List<AdminProducersTable>();
                 foreach (var producer in _producers.GetProducers)
                 {
@@ -250,18 +315,11 @@ namespace MyOwnApp.Controllers
             if (!ModelState.IsValid)
             {
                 AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
+
                 return View(obj);
             }
             _materials.AddMaterial(new Material { Name = model.Name });
-            return RedirectToAction("AdminPage", "Admin");
+            return RedirectToAction("AdminProducts", "Admin");
         }
         [HttpPost]
         public IActionResult AddType(AddTypeModel model)
@@ -269,18 +327,11 @@ namespace MyOwnApp.Controllers
             if (!ModelState.IsValid)
             {
                 AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
+
                 return View(obj);
             }
             _type.AddType(new TypeOfProduct { Name = model.Name });
-            return RedirectToAction("AdminPage", "Admin");
+            return RedirectToAction("AdminProducts", "Admin");
         }
         [HttpPost]
         public IActionResult AddModel(AddModelModel model)
@@ -288,18 +339,11 @@ namespace MyOwnApp.Controllers
             if (!ModelState.IsValid)
             {
                 AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
+
                 return View(obj);
             }
             _productModels.AddModel(new ProductModel { Name = model.Name });
-            return RedirectToAction("AdminPage", "Admin");
+            return RedirectToAction("AdminProducts", "Admin");
         }
         [HttpPost]
         public IActionResult AddDimension(AddDimensionModel model)
@@ -307,14 +351,7 @@ namespace MyOwnApp.Controllers
             if (!ModelState.IsValid)
             {
                 AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
+
                 return View(obj);
             }
             _dimensions.AddDimension(new Dimension
@@ -325,7 +362,7 @@ namespace MyOwnApp.Controllers
                 HandleLength = model.HandleLength,
                 ProductId = model.ProductId
             });
-            return RedirectToAction("AdminPage", "Admin");
+            return RedirectToAction("AdminProducts", "Admin");
         }
         [HttpPost]
         public async Task<IActionResult> AddProducer(AddProducerModel model, IFormFile upploadedFile)
@@ -333,14 +370,7 @@ namespace MyOwnApp.Controllers
             if (!ModelState.IsValid)
             {
                 AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
+
                 return View(obj);
             }
             //if (!Directory.Exists(Path.Combine(_env.WebRootPath, "images")))
@@ -370,7 +400,7 @@ namespace MyOwnApp.Controllers
                 }
             }
 
-            return RedirectToAction("AdminPage", "Admin");
+            return RedirectToAction("AdminProducts", "Admin");
         }
         [HttpPost]
         public IActionResult AddProduct(AddProductModel model)
@@ -378,14 +408,7 @@ namespace MyOwnApp.Controllers
             if (!ModelState.IsValid)
             {
                 AdminModel obj = new AdminModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
-                obj.LayoutModel = layoutModel;
+
                 return View(obj);
             }
             _products.AddProduct(new Product
@@ -403,7 +426,7 @@ namespace MyOwnApp.Controllers
                 TypeId = model.TypeId,
                 ProducerId = model.ProducerId
             });
-            return RedirectToAction("AdminPage", "Admin");
+            return RedirectToAction("AdminProducts", "Admin");
         }
 
 
