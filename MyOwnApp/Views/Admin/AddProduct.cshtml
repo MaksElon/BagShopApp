@@ -1,0 +1,82 @@
+﻿@model MyOwnApp.ViewModels.AddProductModel
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">
+    Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Make an appointment</h5>
+                    <p class="appointP">Fill the inputs</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Admin" asp-action="AddProduct">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label>Name</label>
+                            <input asp-for="Name" type="text" class="form-control">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Color</label>
+                            <input asp-for="Color" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Article</label>
+                            <input asp-for="Article" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Price</label>
+                            <input asp-for="Price" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>SalePercent</label>
+                            <input asp-for="SalePercent" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label>Advertising on</label>
+                            <input asp-for="IsAdvertisingPaid" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <label>AvailableCount</label>
+                            <input asp-for="AvailableCount" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-2 mb-1">
+                            <label>MaterialId</label>
+                            <input asp-for="MaterialId" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-2 mb-1">
+                            <label>ModelId</label>
+                            <input asp-for="ProductModelId" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-2 mb-1">
+                            <label>TypeId</label>
+                            <input asp-for="TypeId" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-2 mb-1">
+                            <label>ProducerId</label>
+                            <input asp-for="ProducerId" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>Description</label>
+                            <input asp-for="Description" type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            Send
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

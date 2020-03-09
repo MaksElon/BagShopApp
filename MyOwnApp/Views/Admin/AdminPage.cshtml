@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model MyOwnApp.ViewModels.AdminModel
 <!DOCTYPE html>
 
 <html>
@@ -46,7 +46,7 @@
                         <div class="col-md-12">
                             <h1 class="title-4">
                                 Welcome back
-                                <span>Admin!</span>
+                                <span>@Model.AdminName!</span>
                             </h1>
                             <hr class="line-seprate">
                         </div>
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">10,368</h2>
+                                <h2 class="number">@Model.OnlineUsers</h2>
                                 <span class="desc">members online</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
@@ -69,8 +69,8 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">388,688</h2>
-                                <span class="desc">items sold</span>
+                                <h2 class="number">@Model.AllTimeSold</h2>
+                                <span class="desc">all time profit</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-shopping-cart"></i>
                                 </div>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">1,086</h2>
+                                <h2 class="number">@Model.WeekSoldCount</h2>
                                 <span class="desc">this week</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-calendar-note"></i>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--red">
-                                <h2 class="number">$1,060,386</h2>
+                                <h2 class="number">$@Model.WeekSold</h2>
                                 <span class="desc">total earnings</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>
@@ -114,7 +114,22 @@
                                 <h3 class="title-3 m-b-30">chart</h3>
                                 <div class="chart-wrap">
                                     <!-- grafic point -->
-                                    <canvas id="myChart"></canvas>
+                                    <canvas id="myLineChart"></canvas>
+                                </div>
+                                <div class="statistic-chart-1-note">
+                                    <span class="big">10,368</span>
+                                    <span>/ 16220 items sold</span>
+                                </div>
+                            </div>
+                            <!-- END CHART-->
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <!-- CHART-->
+                            <div class="statistic-chart-1">
+                                <h3 class="title-3 m-b-30">chart</h3>
+                                <div class="chart-wrap">
+                                    <!-- grafic point -->
+                                    <canvas id="myLineChart2"></canvas>
                                 </div>
                                 <div class="statistic-chart-1-note">
                                     <span class="big">10,368</span>
@@ -134,25 +149,25 @@
                                     <table class="table table-top-campaign">
                                         <tbody>
                                             <tr>
-                                                <td>1. Australia</td>
-                                                <td>$70,261.65</td>
+                                                <td>1. @Model.TopProducers[0].NameOfProducer</td>
+                                                <td>$@Model.TopProducers[0].SoldSumm</td>
                                             </tr>
-                                            <tr>
-                                                <td>2. United Kingdom</td>
-                                                <td>$46,399.22</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3. Turkey</td>
-                                                <td>$35,364.90</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4. Germany</td>
-                                                <td>$20,366.96</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5. France</td>
-                                                <td>$10,366.96</td>
-                                            </tr>
+                                            @*<tr>
+                                            <td>2. @Model.TopProducers[1].NameOfProducer</td>
+                                            <td>$@Model.TopProducers[1].SoldSumm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3. @Model.TopProducers[2].NameOfProducer</td>
+                                            <td>$@Model.TopProducers[2].SoldSumm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4. @Model.TopProducers[3].NameOfProducer</td>
+                                            <td>$@Model.TopProducers[3].SoldSumm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5. @Model.TopProducers[4].NameOfProducer</td>
+                                            <td>$@Model.TopProducers[4].SoldSumm</td>
+                                        </tr>*@
                                         </tbody>
                                     </table>
                                 </div>
@@ -165,7 +180,7 @@
                             <div class="chart-percent-2">
                                 <h3 class="title-3 m-b-15">chart by %</h3>
                                 <div class="chart-wrap">
-                                    <canvas id="circleChart"></canvas>
+                                    <canvas id="myCircleChart"></canvas>
                                 </div>
 
                             </div>
@@ -175,6 +190,14 @@
                 </div>
             </section>
             <!-- END STATISTIC CHART-->
+
+            @await Html.PartialAsync("AddProduct", Model.AddProductModel)
+            @await Html.PartialAsync("AddType", Model.AddTypeModel)
+            @await Html.PartialAsync("AddModel", Model.AddModelModel)
+            @await Html.PartialAsync("AddProducer", Model.AddProducerModel)
+            @await Html.PartialAsync("AddDimension", Model.AddDimensionModel)
+            @await Html.PartialAsync("AddMaterial", Model.AddMaterialModel)
+
             <!-- DATA TABLE-->
             <section class="p-t-20">
                 <div class="container">
@@ -232,149 +255,105 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">lori@example.com</span>
-                                            </td>
-                                            <td class="desc">Samsung S8 Black</td>
-                                            <td>2018-09-27 02:12</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$679.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
+                                        @{
+                                            foreach (var item in Model.Orders)
+                                            {
+                                                <tr class="tr-shadow">
+                                                    <td>
+                                                        <label class="au-checkbox">
+                                                            <input type="checkbox">
+                                                            <span class="au-checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td>@item.Name</td>
+                                                    <td>
+                                                        <span class="block-email">@item.Email</span>
+                                                    </td>
+                                                    <td class="desc">@item.Description</td>
+                                                    <td>@item.Date</td>
+                                                    <td>
+                                                        @{
+                                                            if (item.Status == "Denied")
+                                                            {
+                                                                <span class="status--denied">Denied</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="status--process">Processed</span>
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td>$@item.Price</td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+
+                                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                                    title="Edit">
+                                                                <i class="zmdi zmdi-edit"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                                    title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                                    title="More">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-responsive table-responsive-data2">
+                                <table class="table table-data2">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>name</th>
+                                            <th>description</th>
+                                            <th>available</th>
+                                            <th>characteristics</th>
+                                            <th>price</th>
+                                            <th></th>
                                         </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">john@example.com</span>
-                                            </td>
-                                            <td class="desc">iPhone X 64Gb Grey</td>
-                                            <td>2018-09-29 05:57</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$999.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">lyn@example.com</span>
-                                            </td>
-                                            <td class="desc">iPhone X 256Gb Black</td>
-                                            <td>2018-09-25 19:03</td>
-                                            <td>
-                                                <span class="status--denied">Denied</span>
-                                            </td>
-                                            <td>$1199.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">doe@example.com</span>
-                                            </td>
-                                            <td class="desc">Camera C430W 4k</td>
-                                            <td>2018-09-24 19:10</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$699.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top"
-                                                            title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in Model.Products)
+                                            {
+                                                <tr class="tr-shadow">
+
+                                                    <td>@item.Id</td>
+                                                    <td>
+                                                        <span class="block-email">@item.Name</span>
+                                                    </td>
+                                                    <td class="desc">@item.Description</td>
+                                                    <td>@item.AvailableCount</td>
+                                                    <td>@item.Characteristics</td>
+                                                    <td>$@item.Price</td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+
+                                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                                    title="Edit">
+                                                                <i class="zmdi zmdi-edit"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                                    title="Delete">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </button>
+                                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                                    title="More">
+                                                                <i class="zmdi zmdi-more"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -419,15 +398,16 @@
     <!-- Main JS-->
     <script src="~/js/main.js"></script>
     <script>
-        var ctxL = document.getElementById("myChart").getContext('2d');
-        var myLineChart = new Chart(ctxL, {
+        var myLineChart = new Chart(document.getElementById("myLineChart"), {
             type: 'line',
             data: {
                 labels: ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"],
                 datasets: [{
                     label: "My First ",
-                    data: [65, 59, 80, 81,23,12,65,12,90,12,40,30],
+                    data: [@Model.ChartValue[0], @Model.ChartValue[1],@Model.ChartValue[2], @Model.ChartValue[3],
+                        @Model.ChartValue[4], @Model.ChartValue[5], @Model.ChartValue[6],@Model.ChartValue[7], @Model.ChartValue[8],
+                        @Model.ChartValue[9], @Model.ChartValue[10], @Model.ChartValue[11]],
                     backgroundColor: [
                         'rgba(36, 116, 36, .7)',
                     ],
@@ -449,42 +429,96 @@
 
                     borderWidth: 2
                 },
-                {
-                    label: "My Second ",
-                    data: [28,80,30, 48, 40, 19,90,50,35,71,10,15],
-                    backgroundColor: [
-                        'rgba(51, 40, 204, .7)',
-                    ],
-                    borderColor: [
-                        'rgba(14, 41, 14, .7)',
-                    ],
-                    pointHoverBackgroundColor: [
-                        'rgba(51, 40, 204, .7)',
-                        'rgba(51, 40, 204, .7)',
-                        'rgba(51, 40, 204, .7)',
-                        'rgba(51, 40, 204, .7)',
-                    ],
-                    pointHoverBorderColor: [
-                        'rgba(14, 41, 14, .7)',
-                        'rgba(14, 41, 14, .7)',
-                        'rgba(14, 41, 14, .7)',
-                        'rgba(14, 41, 14, .7)',
-                    ],
-                    borderWidth: 2
-                }
+                //{
+                //    label: "My Second ",
+                //    data: [2800,8000,3000, 4800, 4000, 1900,9000,5000,3500,7100,1000,1500],
+                //    backgroundColor: [
+                //        'rgba(51, 40, 204, .7)',
+                //    ],
+                //    borderColor: [
+                //        'rgba(14, 41, 14, .7)',
+                //    ],
+                //    pointHoverBackgroundColor: [
+                //        'rgba(51, 40, 204, .7)',
+                //        'rgba(51, 40, 204, .7)',
+                //        'rgba(51, 40, 204, .7)',
+                //        'rgba(51, 40, 204, .7)',
+                //    ],
+                //    pointHoverBorderColor: [
+                //        'rgba(14, 41, 14, .7)',
+                //        'rgba(14, 41, 14, .7)',
+                //        'rgba(14, 41, 14, .7)',
+                //        'rgba(14, 41, 14, .7)',
+                //    ],
+                //    borderWidth: 2
+                //}
                 ]
             },
             options: {
                 responsive: true
             }
         });
-        var circle = document.getElementById("circleChart").getContext('2d');
-        var myCircleChart = new Chart(circle, {
+        var myLineChart2 =new Chart(document.getElementById("myLineChart2"), {
+              type: 'line',
+              data: {
+                labels: ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"],
+                datasets: [{
+                    data: [@Model.ChartYearTypes[0].ChartValue[0],@Model.ChartYearTypes[0].ChartValue[1],@Model.ChartYearTypes[0].ChartValue[2],
+                        @Model.ChartYearTypes[0].ChartValue[3],@Model.ChartYearTypes[0].ChartValue[4],@Model.ChartYearTypes[0].ChartValue[5],
+                        @Model.ChartYearTypes[0].ChartValue[6],@Model.ChartYearTypes[0].ChartValue[7],@Model.ChartYearTypes[0].ChartValue[8],
+                        @Model.ChartYearTypes[0].ChartValue[9],@Model.ChartYearTypes[0].ChartValue[10],@Model.ChartYearTypes[0].ChartValue[11]],
+                    label: "@Model.ChartYearTypes[0].Year",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                  }@*,{
+                    data: [@Model.ChartYearTypes[1].ChartValue[0],@Model.ChartYearTypes[1].ChartValue[1],@Model.ChartYearTypes[1].ChartValue[2],
+                        @Model.ChartYearTypes[1].ChartValue[3],@Model.ChartYearTypes[1].ChartValue[4],@Model.ChartYearTypes[1].ChartValue[5],
+                        @Model.ChartYearTypes[1].ChartValue[6],@Model.ChartYearTypes[1].ChartValue[7],@Model.ChartYearTypes[1].ChartValue[8],
+                        @Model.ChartYearTypes[1].ChartValue[9],@Model.ChartYearTypes[1].ChartValue[10],@Model.ChartYearTypes[1].ChartValue[11]],
+                    label: "@Model.ChartYearTypes[1].Year",
+                    borderColor: "#3e95cd",
+                    fill: false
+                  },{
+                    data: [@Model.ChartYearTypes[2].ChartValue[0],@Model.ChartYearTypes[2].ChartValue[1],@Model.ChartYearTypes[2].ChartValue[2],
+                        @Model.ChartYearTypes[2].ChartValue[3],@Model.ChartYearTypes[2].ChartValue[4],@Model.ChartYearTypes[2].ChartValue[5],
+                        @Model.ChartYearTypes[2].ChartValue[6],@Model.ChartYearTypes[2].ChartValue[7],@Model.ChartYearTypes[2].ChartValue[8],
+                        @Model.ChartYearTypes[2].ChartValue[9],@Model.ChartYearTypes[2].ChartValue[10],@Model.ChartYearTypes[2].ChartValue[11]],
+                    label: "@Model.ChartYearTypes[2].Year",
+                    borderColor: "#3cba9f",
+                    fill: false
+                  }, {
+                    data: [@Model.ChartYearTypes[3].ChartValue[0],@Model.ChartYearTypes[3].ChartValue[1],@Model.ChartYearTypes[3].ChartValue[2],
+                        @Model.ChartYearTypes[3].ChartValue[3],@Model.ChartYearTypes[3].ChartValue[4],@Model.ChartYearTypes[3].ChartValue[5],
+                        @Model.ChartYearTypes[3].ChartValue[6],@Model.ChartYearTypes[3].ChartValue[7],@Model.ChartYearTypes[3].ChartValue[8],
+                        @Model.ChartYearTypes[3].ChartValue[9],@Model.ChartYearTypes[3].ChartValue[10],@Model.ChartYearTypes[3].ChartValue[11]],
+                    label: "@Model.ChartYearTypes[3].Year",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                  }, {
+                    data: [@Model.ChartYearTypes[4].ChartValue[0],@Model.ChartYearTypes[4].ChartValue[1],@Model.ChartYearTypes[4].ChartValue[2],
+                        @Model.ChartYearTypes[4].ChartValue[3],@Model.ChartYearTypes[4].ChartValue[4],@Model.ChartYearTypes[4].ChartValue[5],
+                        @Model.ChartYearTypes[4].ChartValue[6],@Model.ChartYearTypes[4].ChartValue[7],@Model.ChartYearTypes[4].ChartValue[8],
+                        @Model.ChartYearTypes[4].ChartValue[9],@Model.ChartYearTypes[4].ChartValue[10],@Model.ChartYearTypes[4].ChartValue[11]],
+                    label: "@Model.ChartYearTypes[4].Year",
+                    borderColor: "#c45850",
+                    fill: false
+                  }*@
+                ]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: 'Display all times company profits'
+                }
+              }
+            });
+        var myCircleChart = new Chart(document.getElementById("myCircleChart"), {
             type: 'doughnut',
             data: {
-                labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+                labels: ["@Model.ChartProductTypes[0].NameOfType", "@Model.ChartProductTypes[1].NameOfType", "@Model.ChartProductTypes[2].NameOfType", "@Model.ChartProductTypes[3].NameOfType", "@Model.ChartProductTypes[4].NameOfType"],
                 datasets: [{
-                    data: [300, 50, 100, 40, 120],
+                    data: [@Model.ChartProductTypes[0].SoldSumm, @Model.ChartProductTypes[1].SoldSumm, @Model.ChartProductTypes[2].SoldSumm, @Model.ChartProductTypes[3].SoldSumm, @Model.ChartProductTypes[4].SoldSumm],
                     backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                     hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
                 }]

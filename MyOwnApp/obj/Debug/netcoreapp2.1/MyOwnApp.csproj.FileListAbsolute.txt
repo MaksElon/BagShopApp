@@ -20,6 +20,13 @@ C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcor
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AddDimension.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AddMaterial.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AddModel.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AddProducer.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AddProduct.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AddType.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminPage.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Bag\Cart.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Bag\Catalog.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Bag\Product.cshtml.g.cs
@@ -41,4 +48,3 @@ C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcor
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.pdb
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.csproj.CopyComplete
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\MyOwnApp.csprojAssemblyReference.cache
-C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminPage.cshtml.g.cs

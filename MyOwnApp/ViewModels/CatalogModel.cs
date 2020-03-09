@@ -13,6 +13,6 @@ namespace MyOwnApp.ViewModels
         public LayoutViewModel LayoutModel { get; set; }
         public List<ProductImage> GetProductImages { get; set; }
         public int ProductImagesCount { get; set; }
-
+       
     }
 }

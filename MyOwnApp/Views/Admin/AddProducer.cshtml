@@ -1,0 +1,45 @@
+﻿@model MyOwnApp.ViewModels.AddProducerModel
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#producerModal">
+    Producer
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="producerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Producer</h5>
+                    <p class="appointP">Fill the inputs</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Admin" asp-action="AddProducer">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label>Name</label>
+                            <input asp-for="Name" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>CapacityAddress</label>
+                            <input asp-for="CapacityAddress" type="text" class="form-control">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>ImageName</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            Send
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

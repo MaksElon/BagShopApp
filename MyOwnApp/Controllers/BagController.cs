@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyOwnApp.ComponentModels;
 using MyOwnApp.Data.Interfaces;
 using MyOwnApp.Data.Models;
 using MyOwnApp.Models;
@@ -15,9 +16,9 @@ namespace MyOwnApp.Controllers
     public class BagController : Controller
     {
         private readonly IProducts _products;
+        private readonly IProductImages _productImages;
         private readonly IProducers _producers;
         private readonly IProductModels _productModels;
-        private readonly IProductImages _productImages;
         private readonly IMaterials _materials;
         private readonly IDimensions _dimensions;
         private readonly IOrders _orders;
@@ -59,6 +60,69 @@ namespace MyOwnApp.Controllers
             layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
             obj.LayoutModel = layoutModel;
             obj.GetProducts = _products.GetProducts.ToList();
+            obj.ProductsCount = _products.GetProducts.Count();
+            obj.GetProductImages = _productImages.GetProductImages.ToList();
+            obj.ProductImagesCount = _productImages.GetProductImages.Count();
+            return View(obj);
+        }
+        [HttpGet]
+        [Route("Bag/Catalog/{id}/{name}")]
+        public IActionResult Catalog(int id, string name)
+        {
+            CatalogModel obj = new CatalogModel();
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
+            if (name == "Type")
+            {
+                obj.GetProducts = _products.GetProducts.Where(t=>t.TypeId==id).ToList();
+            }
+            else if(name == "Material")
+            {
+                obj.GetProducts = _products.GetProducts.Where(t => t.MaterialId == id).ToList();
+            }
+            else if (name == "Model")
+            {
+                obj.GetProducts = _products.GetProducts.Where(t => t.ProductModelId == id).ToList();
+            }
+            else if (name == "Producer")
+            {
+                obj.GetProducts = _products.GetProducts.Where(t => t.ProducerId == id).ToList();
+            }
+            obj.ProductsCount = _products.GetProducts.Count();
+            obj.GetProductImages = _productImages.GetProductImages.ToList();
+            obj.ProductImagesCount = _productImages.GetProductImages.Count();
+            return View(obj);
+        }
+        [HttpPost]
+        public IActionResult Catalog(SideBarModel sm)
+        {
+            CatalogModel obj = new CatalogModel();
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            obj.LayoutModel = layoutModel;
+            int min, max;
+            if(sm.FirstPrice>sm.SecondPrice)
+            {
+                min = sm.SecondPrice;
+                max = sm.FirstPrice;
+            }
+            else
+            {
+                max = sm.SecondPrice;
+                min = sm.FirstPrice;
+            }
+            obj.GetProducts = _products.GetProducts.Where(t => (t.Price-(t.Price/100*t.SalePercent)) >= min&& (t.Price - (t.Price / 100 * t.SalePercent)) <= max).ToList();           
             obj.ProductsCount = _products.GetProducts.Count();
             obj.GetProductImages = _productImages.GetProductImages.ToList();
             obj.ProductImagesCount = _productImages.GetProductImages.Count();
@@ -155,7 +219,7 @@ namespace MyOwnApp.Controllers
             {
                 var result = JsonConvert.DeserializeObject<UserInfo>(info);
                 _dislikes.AddDislike(new Dislikes { ProductId = id, UserId = result.UserId });
-                return RedirectToAction("Product","Bag",new { id=id});
+                return RedirectToAction("Product", "Bag", new { id = id });
             }
             return RedirectToAction("AccountAction", "Account");
         }

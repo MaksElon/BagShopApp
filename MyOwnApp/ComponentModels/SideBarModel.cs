@@ -14,5 +14,7 @@ namespace MyOwnApp.ComponentModels
         public IEnumerable<Producer> Producers { get; set; }
         public int MaxPrice { get; set; }
         public int MinPrice { get; set; }
+        public int FirstPrice { get; set; }
+        public int SecondPrice { get; set; }
     }
 }

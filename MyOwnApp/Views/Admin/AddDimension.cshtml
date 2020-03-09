@@ -1,0 +1,52 @@
+﻿@model MyOwnApp.ViewModels.AddDimensionModel
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dimensionModal">
+    Dimension
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="dimensionModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Dimension</h5>
+                    <p class="appointP">Fill the inputs</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Admin" asp-action="AddDimension">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label>Width</label>
+                            <input asp-for="Width" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Height</label>
+                            <input asp-for="Height" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>BottomWidth</label>
+                            <input asp-for="BottomWidth" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>HandleLength</label>
+                            <input asp-for="HandleLength" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label>ProductId</label>
+                            <input asp-for="ProductId" type="text" class="form-control">
+                        </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                Send
+                            </button>
+                    </div>
+                    
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

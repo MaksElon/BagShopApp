@@ -11,12 +11,21 @@ namespace MyOwnApp.ViewModels
     {
         public LayoutViewModel LayoutModel { get; set; }
         public List<AdminProducersTable> TopProducers { get; set; }
-        public List<Order> Orders { get; set; }
-        public List<AdminChartType> ProductTypes { get; set; }
+        public List<AdminOrder> Orders { get; set; }
+        public List<AdminProduct> Products { get; set; }
+        public List<AdminChartType> ChartProductTypes { get; set; }
+        public List<AdminYearChartType> ChartYearTypes { get; set; }
         public List<int> ChartValue { get; set; }
         public int AllTimeSold { get; set; }
         public int WeekSold { get; set; }
-        public int WeekProfit { get; set; }
+        public int WeekSoldCount { get; set; }
         public int OnlineUsers { get; set; }
+        public string AdminName { get; set; }
+        public AddDimensionModel AddDimensionModel { get; set; }
+        public AddMaterialModel AddMaterialModel { get; set; }
+        public AddModelModel AddModelModel { get; set; }
+        public AddProducerModel AddProducerModel { get; set; }
+        public AddProductModel AddProductModel { get; set; }
+        public AddTypeModel AddTypeModel { get; set; }
     }
 }

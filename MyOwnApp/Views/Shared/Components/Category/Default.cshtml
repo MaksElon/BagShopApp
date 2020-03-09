@@ -1,4 +1,4 @@
-﻿
+﻿@model MyOwnApp.ComponentModels.SideBarModel
 <div class="sideB">
     <div class="container">
         <div class="row">
@@ -10,14 +10,16 @@
                         @{
                             foreach (var item in Model.Materials)
                             {
-                                <label class="control control--checkbox">
-                                    @item.Name
-                                    <input type="checkbox" />
-                                    <div class="control__indicator"></div>
-                                </label>
+                                var link1 = Url.RouteUrl("twoids", new { controller = "Bag", Action = "Catalog", id = item.Id, name = "Material" });
+                                <a class="CardA" href="@link1">
+                                    <label class="control control--checkbox">
+                                        @item.Name
+                                        <input type="checkbox" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </a>
                             }
                         }
-
                     </div>
                 </div>
             </div>
@@ -29,11 +31,17 @@
                         @{
                             foreach (var item in Model.TypeOfProducts)
                             {
-                                <label class="control control--checkbox">
-                                    @item.Name
-                                    <input type="checkbox" />
-                                    <div class="control__indicator"></div>
-                                </label>
+                                var link1 = Url.RouteUrl("twoids", new { controller = "Bag", Action = "Catalog", id = item.Id, name = "Type" });
+                                <a class="CardA" href="@link1">
+
+                                    <label class="control control--checkbox">
+                                        @item.Name
+                                        <input type="checkbox" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+
+                                </a>
+
                             }
                         }
 
@@ -47,11 +55,15 @@
                         @{
                             foreach (var item in Model.ProductModels)
                             {
-                                <label class="control control--checkbox">
-                                    @item.Name
-                                    <input type="checkbox" />
-                                    <div class="control__indicator"></div>
-                                </label>
+                                var link1 = Url.RouteUrl("twoids", new { controller = "Bag", Action = "Catalog", id = item.Id, name = "Model" });
+                                <a class="CardA" href="@link1">
+
+                                    <label class="control control--checkbox">
+                                        @item.Name
+                                        <input type="checkbox" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </a>
                             }
                         }
 
@@ -63,22 +75,28 @@
     <div class="range-slider">
         @{
             var addition = (@Model.MaxPrice + @Model.MinPrice) / 2;
-            var Fval = @Model.MinPrice+(addition-@Model.MinPrice)/2;
+            var Fval = @Model.MinPrice + (addition - @Model.MinPrice) / 2;
             var Sval = addition;
 
-            <input class="priceRangePrint" type="number" value="@Fval" min="@Model.MinPrice" max="@Model.MaxPrice" />
-            <input class="priceRangePrint" type="number" value="@Sval" min="@Model.MinPrice" max="@Model.MaxPrice" />
-            <input value="@Fval" min="@Model.MinPrice" max="@Model.MaxPrice" step="100" type="range" />
-            <input value="@Sval" min="@Model.MinPrice" max="@Model.MaxPrice" step="100" type="range" />
+            <form asp-controller="Bag" asp-action="Catalog">
+                <input asp-for="FirstPrice" class="priceRangePrint" type="number" value="@Fval" min="@Model.MinPrice" max="@Model.MaxPrice" />
+                <input asp-for="SecondPrice" class="priceRangePrint" type="number" value="@Sval" min="@Model.MinPrice" max="@Model.MaxPrice" />
+                <input value="@Fval" min="@Model.MinPrice" max="@Model.MaxPrice" step="100" type="range" />
+                <input value="@Sval" min="@Model.MinPrice" max="@Model.MaxPrice" step="100" type="range" />
+                <p class="mt-5"><button class="btn btn-info btn-block " type="submit">Choose</button></p>
+            </form>
         }
     </div>
     <form class="dropdownForm">
         <input class="chosen-value" type="text" value="" placeholder="Type to filter">
         <ul class="value-list">
             @{
-                foreach(var item in Model.Producers)
+                foreach (var item in Model.Producers)
                 {
-                    <li>@item.Name</li>
+                    var link1 = Url.RouteUrl("twoids", new { controller = "Bag", Action = "Catalog", id = item.Id, name = "Producer" });
+                    <a class="CardA" href="@link1">
+                        <li>@item.Name</li>
+                    </a>
                 }
             }
         </ul>

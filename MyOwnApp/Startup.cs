@@ -101,7 +101,13 @@ namespace MyOwnApp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });
+                routes.MapRoute(
+                    // Name of the new route, we'll need it later to generate URLs in the templates
+                    name: "twoids",
+                    // Route pattern
+                    template: "{controller}/{id}/{action}/{name}");
+                
+        });
         }
     }
 }

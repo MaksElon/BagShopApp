@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace MyOwnApp.Models
 {
-    public class AdminProducersTable
+    public class AdminYearChartType
     {
-        public int SoldSumm { get; set; }
-        public string NameOfProducer { get; set; }
+        public string Year { get; set; }
+        public List<int> ChartValue { get; set; }
     }
 }
