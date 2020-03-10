@@ -22,12 +22,12 @@
                         <img src="~/images/logoShoes.png" />
                     </a>
 
-                    <form class="form-inline my-2 my-lg-0 ">
+                    @*<form class="form-inline my-2 my-lg-0 ">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
                             <i class="fas fa-search" style="margin-right:10px"></i>Search
                         </button>
-                    </form>
+                    </form>*@
 
                 </div>
                 <button id="toggleNavBtn" class="navbar-toggler px-2" type="button" data-toggle="collapse"
@@ -212,7 +212,7 @@
                                                         {
                                                             <div class="card cardBrand">
                                                                 <div class="card-body">
-                                                                    <img class="brandImg" src=@("images/"+ producers[j].ImageName) />
+                                                                    <img class="brandImg" src=@producers[j].ImageName />
                                                                 </div>
                                                             </div>
                                                         }
@@ -228,7 +228,7 @@
                                                         {
                                                             <div class="card cardBrand">
                                                                 <div class="card-body">
-                                                                    <img class="brandImg" src=@("images/"+ producers[i].ImageName) />
+                                                                    <img class="brandImg" src=@producers[i].ImageName />
                                                                 </div>
                                                             </div>
                                                         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -13,10 +14,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using MyOwnApp.Data.Entities;
 using MyOwnApp.Data.Interfaces;
 using MyOwnApp.Data.Repositories;
 using MyOwnApp.Services;
+
 
 namespace MyOwnApp
 {
@@ -92,6 +95,13 @@ namespace MyOwnApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             //app.UseCookiePolicy();
+            string fileDestStr = env.ContentRootPath;
+            fileDestStr = Path.Combine(fileDestStr, "Uploaded");
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(fileDestStr),
+                RequestPath = new PathString("/Telesyk")
+            });
 
             app.UseSession();
 

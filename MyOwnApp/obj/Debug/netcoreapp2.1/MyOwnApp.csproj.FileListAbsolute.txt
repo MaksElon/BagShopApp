@@ -52,3 +52,4 @@ C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcor
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminOrders.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminFirstChart.cshtml.g.cs
 C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Admin\AdminSecondChart.cshtml.g.cs
+C:\Users\marty\OneDrive\Desktop\asp.net\MyOwn\MyOwnApp\MyOwnApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Error.cshtml.g.cs

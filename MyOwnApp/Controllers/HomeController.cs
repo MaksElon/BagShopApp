@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,12 @@ namespace MyOwnApp.Controllers
             obj.GetRecommendedProducts = _products.GetProducts.ToList();
             obj.RecommendedProductsCount = 9;
             LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
+            var pr = _producers.GetProducers.ToList();
+            foreach (var item in pr)
+            {
+                item.ImageName = Path.Combine("/Telesyk", item.ImageName);
+            }
+            layoutModel.GetProducers = pr;
             layoutModel.ProducersCount = _producers.GetProducers.Count();
             layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
             layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
@@ -43,6 +49,18 @@ namespace MyOwnApp.Controllers
             layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
             obj.LayoutModel = layoutModel;
             return View(obj);
+        }
+        [Route("Home/Error/{errorType}")]
+        public IActionResult Error(int errorType)
+        { 
+            ErrorModel errorModel=new ErrorModel();
+            if (errorType == 1)
+                errorModel.ErrorName = "Not Found";
+            else if(errorType==2)
+                errorModel.ErrorName = "ModelState is empty";
+            else if (errorType == 3)
+                errorModel.ErrorName = "Za pusti post methodu ZASTRELU!!!!!!!";
+            return View(errorModel);
         }
 
         public IActionResult About()
@@ -64,10 +82,7 @@ namespace MyOwnApp.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
+        
     }
 }

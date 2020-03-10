@@ -77,12 +77,12 @@ using MyOwnApp.Models;
                 ");
             EndContext();
             BeginContext(868, 533, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78122b27e529492990252d851d258e0d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3353ed87dbf540f0959f5fea1a391d1e", async() => {
                 BeginContext(922, 177, true);
                 WriteLiteral("\r\n                    <div class=\"form-row\">\r\n                        <div class=\"col-md-12 mb-3\">\r\n                            <label>Name</label>\r\n                            ");
                 EndContext();
                 BeginContext(1099, 55, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "67636877af054afbaa9c239d08897e54", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "26af219394194ef4bf48a8568d7c1fc6", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

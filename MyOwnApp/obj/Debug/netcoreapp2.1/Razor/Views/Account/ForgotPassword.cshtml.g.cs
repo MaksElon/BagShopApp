@@ -73,12 +73,12 @@ using MyOwnApp.Models;
             WriteLiteral("<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(109, 280, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38f154897ca24c8ab5b96dbbed19a191", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "287f2ff208464750b932823c6e5880e9", async() => {
                 BeginContext(115, 211, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>ForgotPassword</title>\r\n    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" />\r\n    ");
                 EndContext();
                 BeginContext(326, 54, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1331a31463ea4db8a800d0ed47f7f0cf", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2c61a58cb43d4bd6a8903f9f162283dc", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -112,17 +112,17 @@ using MyOwnApp.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(391, 699, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "523c0b061e7e4f438fb1a4ac9be9a900", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2e9c241969e4ae299b79654d0763419", async() => {
                 BeginContext(397, 182, true);
                 WriteLiteral("\r\n    <div class=\"forgot-wrap\">\r\n        <div class=\"forgot-html\">      \r\n            <label for=\"tab-1\" class=\"tab\"></label>\r\n            <div class=\"forgot-form\">\r\n                ");
                 EndContext();
                 BeginContext(579, 444, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9525c2a71ef44c1e8793937feb489b4d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "450b41bf351747598236d5efa14d8bf1", async() => {
                     BeginContext(638, 127, true);
                     WriteLiteral("\r\n                    <div class=\"group\">\r\n                        <label class=\"label\">Email</label>\r\n                        ");
                     EndContext();
                     BeginContext(765, 49, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "5d57e28f2a1646b293b3612f1fc28630", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "d2756452fc774245a218e8af15906a18", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

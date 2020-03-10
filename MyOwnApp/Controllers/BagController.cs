@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -51,13 +52,8 @@ namespace MyOwnApp.Controllers
         public IActionResult Catalog()
         {
             CatalogModel obj = new CatalogModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             obj.GetProducts = _products.GetProducts.ToList();
             obj.ProductsCount = _products.GetProducts.Count();
@@ -70,13 +66,8 @@ namespace MyOwnApp.Controllers
         public IActionResult Catalog(int id, string name)
         {
             CatalogModel obj = new CatalogModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             if (name == "Type")
             {
@@ -103,13 +94,8 @@ namespace MyOwnApp.Controllers
         public IActionResult Catalog(SideBarModel sm)
         {
             CatalogModel obj = new CatalogModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             int min, max;
             if(sm.FirstPrice>sm.SecondPrice)
@@ -137,13 +123,8 @@ namespace MyOwnApp.Controllers
                 var result = JsonConvert.DeserializeObject<UserInfo>(info);
 
                 CartModel obj = new CartModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+                LayoutViewModel layoutModel = InitLayoutModel();
+                
                 obj.LayoutModel = layoutModel;
                 var order = _orders.GetOrders.FirstOrDefault(o => o.UserId == result.UserId);
                 obj.GetOrder = order;
@@ -165,13 +146,8 @@ namespace MyOwnApp.Controllers
                 var result = JsonConvert.DeserializeObject<UserInfo>(info);
 
                 ProductViewModel obj = new ProductViewModel();
-                LayoutViewModel layoutModel = new LayoutViewModel();
-                layoutModel.GetProducers = _producers.GetProducers.ToList();
-                layoutModel.ProducersCount = _producers.GetProducers.Count();
-                layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-                layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-                layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-                layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+                LayoutViewModel layoutModel = InitLayoutModel();
+
                 obj.LayoutModel = layoutModel;
                 var prod = _products.GetProducts.FirstOrDefault(p => p.Id == id);
                 obj.GetProduct = prod;
@@ -222,6 +198,22 @@ namespace MyOwnApp.Controllers
                 return RedirectToAction("Product", "Bag", new { id = id });
             }
             return RedirectToAction("AccountAction", "Account");
+        }
+        public LayoutViewModel InitLayoutModel()
+        {
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            var pr = _producers.GetProducers.ToList();
+            foreach (var item in pr)
+            {
+                item.ImageName = Path.Combine("/Telesyk", item.ImageName);
+            }
+            layoutModel.GetProducers = pr;
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            return layoutModel;
         }
     }
 }

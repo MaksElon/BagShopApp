@@ -314,9 +314,11 @@ namespace MyOwnApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                AdminModel obj = new AdminModel();
-
-                return View(obj);
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
+            }
+            if (model.Name==null)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
             }
             _materials.AddMaterial(new Material { Name = model.Name });
             return RedirectToAction("AdminProducts", "Admin");
@@ -326,9 +328,11 @@ namespace MyOwnApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                AdminModel obj = new AdminModel();
-
-                return View(obj);
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
+            }
+            if (model.Name == null)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
             }
             _type.AddType(new TypeOfProduct { Name = model.Name });
             return RedirectToAction("AdminProducts", "Admin");
@@ -338,9 +342,11 @@ namespace MyOwnApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                AdminModel obj = new AdminModel();
-
-                return View(obj);
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
+            }
+            if (model.Name == null)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
             }
             _productModels.AddModel(new ProductModel { Name = model.Name });
             return RedirectToAction("AdminProducts", "Admin");
@@ -350,9 +356,11 @@ namespace MyOwnApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                AdminModel obj = new AdminModel();
-
-                return View(obj);
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
+            }
+            if (model.Width == 0|| model.Height == 0|| model.HandleLength== 0 || model.BottomWidth == 0 || model.ProductId == 0)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
             }
             _dimensions.AddDimension(new Dimension
             {
@@ -365,30 +373,28 @@ namespace MyOwnApp.Controllers
             return RedirectToAction("AdminProducts", "Admin");
         }
         [HttpPost]
-        public async Task<IActionResult> AddProducer(AddProducerModel model, IFormFile upploadedFile)
+        public async Task<IActionResult> AddProducer(AddProducerModel model, IFormFile uploadedFile)
         {
             if (!ModelState.IsValid)
             {
-                AdminModel obj = new AdminModel();
-
-                return View(obj);
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
             }
-            //if (!Directory.Exists(Path.Combine(_env.WebRootPath, "images")))
-            //{
-            //    Directory.CreateDirectory(Path.Combine(_env.WebRootPath, "images"));
-            //}
-            if (upploadedFile != null)
+            if (model.Name == null|| model.CapacityAddress == null)
             {
-                var file = upploadedFile;
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
+            }
+            if (uploadedFile != null)
+            {
+                var file = uploadedFile;
                 if (file.Length > 0)
                 {
                     var folderServerPath = _env.ContentRootPath;
-                    var folderName = "images";
+                    var folderName = "Uploaded";
                     var fileName = Guid.NewGuid().ToString() + ".jpg";
                     var saveFile = Path.Combine(folderServerPath, folderName, fileName);
                     using (var stream = System.IO.File.Create(saveFile))
                     {
-                        await upploadedFile.CopyToAsync(stream);
+                        await uploadedFile.CopyToAsync(stream);
                     }
                     _producers.AddProducer(new Producer
                     {
@@ -396,7 +402,7 @@ namespace MyOwnApp.Controllers
                         CapacityAddress = model.CapacityAddress,
                         ImageName = fileName
                     });
-
+                    
                 }
             }
 
@@ -407,9 +413,11 @@ namespace MyOwnApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                AdminModel obj = new AdminModel();
-
-                return View(obj);
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
+            }
+            if (model.Name == null|| model.MaterialId == 0|| model.Price == 0|| model.ProducerId == 0|| model.ProductModelId == 0|| model.TypeId == 0)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
             }
             _products.AddProduct(new Product
             {
@@ -449,6 +457,7 @@ namespace MyOwnApp.Controllers
             //return myDaysOfWeek;
             return myDates;
         }
+        
     }
 
 }

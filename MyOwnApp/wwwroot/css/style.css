@@ -428,6 +428,7 @@ h1,h2 {
 
 .productList {
     padding-right: 0px;
+    width: 84vw !important; 
     /* border-left: 1px rgb(138, 11, 9) solid; */
 }
 
@@ -452,3 +453,16 @@ h1,h2 {
         text-decoration: none;
         cursor: pointer;
     }
+.col-2dot4 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.col-2dot4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}

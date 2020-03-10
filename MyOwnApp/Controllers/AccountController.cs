@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -42,13 +43,8 @@ namespace MyOwnApp.Controllers
         public IActionResult ForgotPassword()
         {
             ForgotPasswordModel obj = new ForgotPasswordModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             return View(obj);
         }
@@ -57,13 +53,8 @@ namespace MyOwnApp.Controllers
         public IActionResult ChangePassword(string id)
         {
             ChangePasswordModel obj = new ChangePasswordModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             var user = _context.Users.FirstOrDefault(u => u.Id == id);
             return View(obj);
@@ -73,13 +64,8 @@ namespace MyOwnApp.Controllers
         public async Task<IActionResult> ChangePassword(ChangePasswordModel model, string id)
         {
             ChangePasswordModel obj = new ChangePasswordModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             if (ModelState.IsValid)
             {
@@ -100,13 +86,8 @@ namespace MyOwnApp.Controllers
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
             ForgotPasswordModel obj = new ForgotPasswordModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             if (!ModelState.IsValid)
             {
@@ -152,13 +133,8 @@ namespace MyOwnApp.Controllers
                 var result = JsonConvert.DeserializeObject<UserInfo>(info);
             }
             AccountActionModel obj = new AccountActionModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             RegisterViewModel obj2 = new RegisterViewModel();
             LoginViewModel obj3 = new LoginViewModel();
@@ -188,31 +164,29 @@ namespace MyOwnApp.Controllers
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             AccountActionModel obj = new AccountActionModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             obj.RegisterViewModel = new RegisterViewModel();
             obj.LoginViewModel = new LoginViewModel();
             if (!ModelState.IsValid)
             {
-                return View(obj);
+                return RedirectToAction("AccountAction", "Account");
+                //return View(obj);
             }
             var user = _context.Users.FirstOrDefault(t => t.Email == model.Email);
             if (user == null)
             {
                 ModelState.AddModelError("", "User not exist");
-                return View(obj);
+                return RedirectToAction("AccountAction", "Account");
+                //return View(obj);
             }
             var result = _signInManager.PasswordSignInAsync(user, model.Password, false, false).Result;
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Incorrect password");
-                return View(obj);
+                return RedirectToAction("AccountAction", "Account");
+                //return View(obj);
             }
             await _signInManager.SignInAsync(user, isPersistent: false);
 
@@ -229,20 +203,15 @@ namespace MyOwnApp.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             AccountActionModel obj = new AccountActionModel();
-            LayoutViewModel layoutModel = new LayoutViewModel();
-            layoutModel.GetProducers = _producers.GetProducers.ToList();
-            layoutModel.ProducersCount = _producers.GetProducers.Count();
-            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
-            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
-            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
-            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            LayoutViewModel layoutModel = InitLayoutModel();
+            
             obj.LayoutModel = layoutModel;
             obj.RegisterViewModel = new RegisterViewModel();
             obj.LoginViewModel = new LoginViewModel();
             if (!ModelState.IsValid)
             {
-
-                return View(obj);
+                return RedirectToAction("AccountAction", "Account");
+                //return View(obj);
             }
             UserProfile userProfile = new UserProfile()
             {
@@ -276,7 +245,8 @@ namespace MyOwnApp.Controllers
             }
 
 
-            return View(obj);
+            return RedirectToAction("AccountAction", "Account");
+            //return View(obj);
         }
         private async Task Authenticate(string userName)
         {
@@ -301,6 +271,22 @@ namespace MyOwnApp.Controllers
             await _signInManager.SignOutAsync();
             //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("AccountGet", "Account");
+        }
+        public LayoutViewModel InitLayoutModel()
+        {
+            LayoutViewModel layoutModel = new LayoutViewModel();
+            var pr = _producers.GetProducers.ToList();
+            foreach (var item in pr)
+            {
+                item.ImageName = Path.Combine("/Telesyk", item.ImageName);
+            }
+            layoutModel.GetProducers = pr;
+            layoutModel.ProducersCount = _producers.GetProducers.Count();
+            layoutModel.GetTypeOfProducts = _type.GetTypeOfProducts.ToList();
+            layoutModel.TypeCount = _type.GetTypeOfProducts.Count();
+            layoutModel.GetSubCategories = _subCategories.GetSubCategories.ToList();
+            layoutModel.SubCategoriesCount = _subCategories.GetSubCategories.Count();
+            return layoutModel;
         }
     }
 }

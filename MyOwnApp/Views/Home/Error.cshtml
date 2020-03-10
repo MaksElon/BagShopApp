@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+@model MyOwnApp.ViewModels.ErrorModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/css/Errorstyle.css" />
+
+</head>
+<body>
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-bg">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <h1>oops!</h1>
+            <h2>Error: @Model.ErrorName</h2>
+            <a asp-action="Index" asp-controller="Home">go home</a>
+
+        </div>
+    </div>
+</body>
+</html>
