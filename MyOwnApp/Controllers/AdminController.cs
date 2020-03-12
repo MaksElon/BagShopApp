@@ -372,6 +372,21 @@ namespace MyOwnApp.Controllers
             });
             return RedirectToAction("AdminProducts", "Admin");
         }
+        [HttpGet]
+        [Route("Admin/DeleteProduct/{id}")]
+        public IActionResult DeleteProduct(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 2 });
+            }
+            if (id==0)
+            {
+                return RedirectToAction("Error", "Home", new { errorType = 3 });
+            }
+            _products.DeleteProduct(id);
+            return RedirectToAction("AdminProducts", "Admin");
+        }
         [HttpPost]
         public async Task<IActionResult> AddProducer(AddProducerModel model, IFormFile uploadedFile)
         {
