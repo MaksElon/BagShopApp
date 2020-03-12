@@ -41,5 +41,6 @@ namespace MyOwnApp.Data.Models
 
         public virtual ICollection<ProductOrder> ProductOrders { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

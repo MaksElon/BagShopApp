@@ -29,9 +29,12 @@ namespace MyOwnApp.Controllers
         private readonly IDeliveries _deliveries;
         private readonly ILikes _likes;
         private readonly IDislikes _dislikes;
+        private readonly IReviews _reviews;
+        private readonly IUserProfiles _userProfiles;
+        private readonly IUsers _users;
 
 
-        public BagController(IDislikes dislikes, ILikes likes, IDeliveries deliveries, IProductOrders productOrders, ITypeOfProducts type, ISubCategories subCategories, IOrders orders, IDimensions dimensions, IProducts products, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
+        public BagController(IUsers users,IUserProfiles userProfiles,IReviews reviews,IDislikes dislikes, ILikes likes, IDeliveries deliveries, IProductOrders productOrders, ITypeOfProducts type, ISubCategories subCategories, IOrders orders, IDimensions dimensions, IProducts products, IProducers producers, IProductModels productModels, IProductImages productImages, IMaterials materials)
         {
             _products = products;
             _producers = producers;
@@ -46,6 +49,9 @@ namespace MyOwnApp.Controllers
             _deliveries = deliveries;
             _dislikes = dislikes;
             _likes = likes;
+            _reviews = reviews;
+            _userProfiles = userProfiles;
+            _users = users;
         }
 
         [HttpGet]
@@ -169,6 +175,16 @@ namespace MyOwnApp.Controllers
                     if (isDislike != null)
                         obj.AlreadyDisliked = true;
                 }
+                List<ReviewModel> reviewModels = new List<ReviewModel>();
+                foreach(var item in _reviews.GetReviews.Where(t => t.ProductId == id)) 
+                {
+                    reviewModels.Add(new ReviewModel
+                    {
+                        Value = item.Value,
+                        NameOfUser = _userProfiles.GetUserProfiles.FirstOrDefault(t=>t.User==_users.GetUsers.FirstOrDefault(u=>u.Id==item.UserId)).FirstName
+                    });
+                }
+                obj.Reviews = reviewModels;
                 return View(obj);
             }
             return RedirectToAction("AccountAction", "Account");

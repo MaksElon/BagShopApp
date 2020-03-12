@@ -65,6 +65,7 @@ namespace MyOwnApp
             services.AddTransient<IProductModels, ProductModelRepository>();
             services.AddTransient<IProductImages, ProductImageRepository>();
             services.AddTransient<IMaterials, MaterialRepository>();
+            services.AddTransient<IReviews, ReviewRepository>();
             services.AddTransient<IDimensions, DimensionRepository>();
             services.AddTransient<ITypeOfProducts, TypeOfProductRepository>();
             services.AddTransient<ISubCategories, SubCategoryRepository>();

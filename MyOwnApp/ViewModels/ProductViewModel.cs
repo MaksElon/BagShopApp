@@ -1,4 +1,5 @@
 ﻿using MyOwnApp.Data.Models;
+using MyOwnApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,6 @@ namespace MyOwnApp.ViewModels
         public bool AlreadyDisliked { get; set; }
         public int LikesCount { get; set; }
         public int DislikesCount { get; set; }
+        public List<ReviewModel> Reviews { get; set; }
     }
 }
