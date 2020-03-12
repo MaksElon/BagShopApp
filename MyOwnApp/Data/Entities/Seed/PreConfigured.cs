@@ -162,7 +162,7 @@ namespace MyOwnApp.Data.Entities.Seed
             {
                 Name = "МІС",
                 CapacityAddress="Rivne city, Rabitnichy lane, 5",
-                ImageName=""
+                ImageName="hp-banner-story2a.jpg"
             }
             });
                 await context.SaveChangesAsync();
@@ -225,7 +225,7 @@ namespace MyOwnApp.Data.Entities.Seed
                     Name=/*env.WebRootPath+ */"bag3.jfif",
                     ProductId=3
                 }
-            
+
             });
                 await context.SaveChangesAsync();
             }
@@ -272,9 +272,55 @@ namespace MyOwnApp.Data.Entities.Seed
             }
 
         }
+        public static async Task SeedOrders(EFContext context)
+        {
+
+            try
+            {
+                if (!context.Deliveries.Any())
+                {
+                    Delivery delivery = new Delivery
+                    {
+                        Name = "Nova Poshta",
+                        Price = 2
+                    };
+                    await context.Deliveries.AddAsync(delivery);
+                    await context.SaveChangesAsync();
+                }
+                if (!context.Orders.Any())
+                {
+                    Order order = new Order
+                    {
+                        Status = false,
+                        DateOfOrder = DateTime.Now,
+                        DeliveryId = 1,
+                        UserId = context.Users.First().Id
+                    };
+                    await context.Orders.AddAsync(order);
+                    await context.SaveChangesAsync();
+                }
+                if (!context.ProductOrders.Any())
+                {
+                    ProductOrder productOrder = new ProductOrder
+                    {
+                        ProductId = 1,
+                        OrderId = 1
+                    };
+                    await context.ProductOrders.AddAsync(productOrder);
+                    await context.SaveChangesAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
         public static async Task SeedProducts(EFContext context, IHostingEnvironment env)
         {
-                    
+
             if (!context.Products.Any())
             {
                 try
@@ -288,19 +334,20 @@ namespace MyOwnApp.Data.Entities.Seed
                     if (!context.ProductModels.Any())
                         await SeedProductModels(context);
 
-                        Product product1 = new Product
-                        {
-                            Name = "Women bag MIC - black",
-                            Price = 44,
-                            SalePercent = 30,
-                            Article = "0629",
-                            Color = "Black",
-                            IsAdvertisingPaid = true,
-                            MaterialId = 1,
-                            ProducerId = 1,
-                            TypeId = 1,
-                            ProductModelId = 1
-                        };
+                    Product product1 = new Product
+                    {
+                        Name = "Women bag MIC - black",
+                        Price = 44,
+                        SalePercent = 30,
+                        Article = "0629",
+                        Color = "Black",
+                        IsAdvertisingPaid = true,
+                        AvailableCount = 0,
+                        MaterialId = 1,
+                        ProducerId = 1,
+                        TypeId = 1,
+                        ProductModelId = 1
+                    };
                     Product product2 = new Product
                     {
                         Name = "Women's suede bag MIS - vinous",
@@ -309,6 +356,7 @@ namespace MyOwnApp.Data.Entities.Seed
                         Article = "0703",
                         Color = "Vinous",
                         IsAdvertisingPaid = false,
+                        AvailableCount = 0,
                         MaterialId = 2,
                         ProducerId = 1,
                         TypeId = 1,
@@ -323,12 +371,14 @@ namespace MyOwnApp.Data.Entities.Seed
                         Color = "Combined",
                         IsAdvertisingPaid = true,
                         MaterialId = 3,
+                        AvailableCount = 0,
                         ProducerId = 1,
                         TypeId = 1,
                         ProductModelId = 1
                     };
                     await context.Products.AddRangeAsync(product1, product2, product3);
                     await context.SaveChangesAsync();
+                    await SeedOrders(context);
                     if (!context.Dimensions.Any())
                         await SeedDimensions(context);
                     if (!context.ProductImages.Any())

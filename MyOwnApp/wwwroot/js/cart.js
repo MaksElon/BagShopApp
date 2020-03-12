@@ -196,18 +196,27 @@ $(document).ready(function()
 				originalVal = input.val();
 				endVal = parseFloat(originalVal) + 1;
 				input.val(endVal);
+				let priceVal = $('#prodPrice').text().substring(1);
+				$("#prodTotal").text("$" + (priceVal * endVal));
+				$("#subtotal").text("$" + (priceVal * endVal));
+				$("#totalTotal").text("$" + (priceVal * endVal));
 			});
 
 			decButton.on('click', function()
 			{
 				originalVal = input.val();
-				if(originalVal > 0)
+				if(originalVal > 1)
 				{
 					endVal = parseFloat(originalVal) - 1;
 					input.val(endVal);
+					let priceVal = $('#prodPrice').text().substring(1);
+					$("#prodTotal").text("$" + (priceVal * endVal));
+					$("#subtotal").text("$" + (priceVal * endVal));
+					$("#totalTotal").text("$" + (priceVal * endVal));
 				}
 			});
 		}
 	}
+	
 
 });

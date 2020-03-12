@@ -68,7 +68,7 @@
                                     <!-- Price -->
                                     @{
                                         var pr = item.Price - (item.Price / 100 * item.SalePercent);
-                                        <div class="cart_item_price">$@pr</div>
+                                        <div id="prodPrice" class="cart_item_price">$@pr</div>
                                     }
                                     <!-- Quantity -->
                                     <div class="cart_item_quantity">
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <!-- Total -->
-                                    <div class="cart_item_total">$790.90</div>
+                                    <div id="prodTotal" class="cart_item_total">$790.90</div>
                                 </div>
 
                             </div>
@@ -116,6 +116,18 @@
                                             @item.Name
                                             <input type="radio" name="radio">
                                             <span class="checkmark"></span>
+                                            @{
+                                                if (item.Price == 0)
+                                                {
+                                                    <span class="delivery_price">Free</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="delivery_price">@item.Price</span>
+
+                                                }
+
+                                            }
                                             <span class="delivery_price">@item.Price</span>
                                         </label>
                                     }
@@ -145,7 +157,7 @@
                                 <ul>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Subtotal</div>
-                                        <div class="cart_total_value ml-auto">$790.90</div>
+                                        <div id="subtotal" class="cart_total_value ml-auto">$790.90</div>
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Shipping</div>
@@ -153,7 +165,7 @@
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Total</div>
-                                        <div class="cart_total_value ml-auto">$790.90</div>
+                                        <div id="totalTotal" class="cart_total_value ml-auto">$790.90</div>
                                     </li>
                                 </ul>
                             </div>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marty\\OneDrive\\Desktop\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj": {}
+    "C:\\Users\\marty\\OneDrive\\Desktop\\ШАГ\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marty\\OneDrive\\Desktop\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj": {
+    "C:\\Users\\marty\\OneDrive\\Desktop\\ШАГ\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marty\\OneDrive\\Desktop\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj",
+        "projectUniqueName": "C:\\Users\\marty\\OneDrive\\Desktop\\ШАГ\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj",
         "projectName": "MyOwnApp",
-        "projectPath": "C:\\Users\\marty\\OneDrive\\Desktop\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj",
+        "projectPath": "C:\\Users\\marty\\OneDrive\\Desktop\\ШАГ\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\MyOwnApp.csproj",
         "packagesPath": "C:\\Users\\marty\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marty\\OneDrive\\Desktop\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\obj\\",
+        "outputPath": "C:\\Users\\marty\\OneDrive\\Desktop\\ШАГ\\asp.net\\MyOwn\\MyOwnApp\\MyOwnApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1306,3 +1306,40 @@ section
 {
 	color: #FFFFFF;
 }
+.descr{
+	margin:20px 0px;
+}
+nav > .nav.nav-tabs {
+	border: none;
+	color: #fff;
+	background: #272e38 !important;
+	border-radius: 0;
+}
+
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active {
+	border: none;
+	padding: 18px 25px;
+	color: #fff !important;
+	background: #272e38 !important;
+	border-radius: 0;
+}
+
+
+
+.tab-content {
+	background: #fdfdfd !important;
+	line-height: 25px !important;
+	border-top: 5px solid #e74c3c !important; 
+	border-bottom: 5px solid #e74c3c !important;
+	padding: 30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus {
+	border: none !important;
+	background: #e74c3c !important;
+	color: #fff !important;
+	border-radius: 0;
+	transition: background 0.20s linear !important;
+}
