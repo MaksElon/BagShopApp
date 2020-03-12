@@ -100,7 +100,7 @@ namespace MyOwnApp.Controllers
         public IActionResult Catalog(SideBarModel sm)
         {
             CatalogModel obj = new CatalogModel();
-            LayoutViewModel layoutModel = InitLayoutModel();
+            LayoutViewModel layoutModel = new LayoutViewModel();
             
             obj.LayoutModel = layoutModel;
             int min, max;
@@ -115,7 +115,7 @@ namespace MyOwnApp.Controllers
                 min = sm.FirstPrice;
             }
             obj.GetProducts = _products.GetProducts.Where(t => (t.Price-(t.Price/100*t.SalePercent)) >= min&& (t.Price - (t.Price / 100 * t.SalePercent)) <= max).ToList();           
-            obj.ProductsCount = _products.GetProducts.Count();
+            obj.ProductsCount = obj.GetProducts.Count();
             obj.GetProductImages = _productImages.GetProductImages.ToList();
             obj.ProductImagesCount = _productImages.GetProductImages.Count();
             return View(obj);

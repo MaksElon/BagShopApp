@@ -23,11 +23,11 @@
                     </a>
 
                     @*<form class="form-inline my-2 my-lg-0 ">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
-                            <i class="fas fa-search" style="margin-right:10px"></i>Search
-                        </button>
-                    </form>*@
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+                                <i class="fas fa-search" style="margin-right:10px"></i>Search
+                            </button>
+                        </form>*@
 
                 </div>
                 <button id="toggleNavBtn" class="navbar-toggler px-2" type="button" data-toggle="collapse"
@@ -70,7 +70,7 @@
                                             }
                                         }
                                         <div class="tripleColImg">
-                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                            <img src="~/images/handbag.jfif" />
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                             }
                                         }
                                         <div class="tripleColImg">
-                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                            <img src="~/images/handbag.jfif" />
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@
                                         }
 
                                         <div class="tripleColImg">
-                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                            <img src="~/images/handbag.jfif" />
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                         }
 
                                         <div class="tripleColImg">
-                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                            <img src="~/images/handbag.jfif" />
                                         </div>
                                     </div>
                                 </div>
@@ -268,8 +268,8 @@
 
                                         </div>
                                         <div class="tripleColImg">
-                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
-                                            <img src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/mega-menu/women/boot-trend-shop-moto.jpg?h=403&w=403&la=en&hash=B9AE4D555F0CBFED83D5F35425962F8CA10F585F" />
+                                            <img src="~/images/handbag.jfif" />
+                                            <img src="~/images/handbag.jfif" />
 
                                         </div>
                                     </div>
@@ -286,11 +286,14 @@
                 <div class="account">
                     <a asp-controller="Account" asp-action="AccountAction"><i class="fas fa-user-alt" style="margin-right:10px"></i></a>
                 </div>
-                <form asp-action="Logout" asp-controller="Account">
-                    <div class="cart">
-                        <button style="visibility:hidden" type="submit"><i style="visibility:visible" class="fas fa-shopping-cart"></i></button>
-                    </div>
-                </form>
+                @*<form asp-action="Logout" asp-controller="Account">
+                        <div class="cart">
+                            <button style="visibility:hidden" type="submit"><i style="visibility:visible" class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </form>*@
+                <div class="cart">
+                    <a asp-controller="Bag" asp-action="Cart"><i class="fas fa-shopping-cart" style="margin-right:10px"></i></a>
+                </div>
             </div>
         </nav>
         <div class="miniAdvert active">

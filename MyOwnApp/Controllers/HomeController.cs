@@ -39,7 +39,8 @@ namespace MyOwnApp.Controllers
             var pr = _producers.GetProducers.ToList();
             foreach (var item in pr)
             {
-                item.ImageName = Path.Combine("/Telesyk", item.ImageName);
+                //item.ImageName = Path.Combine("/Telesyk", item.ImageName);
+                item.ImageName = "/Telesyk/" + item.ImageName;
             }
             layoutModel.GetProducers = pr;
             layoutModel.ProducersCount = _producers.GetProducers.Count();

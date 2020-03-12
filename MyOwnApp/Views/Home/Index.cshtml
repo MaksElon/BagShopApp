@@ -21,25 +21,25 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="images/WinterShoes.jpg" class="d-block ">
+                        <img src="~/images/advert1.jpg" class="d-block ">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>
-                                Mountinebike - Winter shoes tested
+                                Travelling bags
                             </h5>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/AirJordan.png" class="d-block">
+                        <img src="~/images/advert2.jpg" class="d-block">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="text-dark">
-                                Nike - Air Jordan women release
+                                Hot products
                             </h5>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/WomenShoes.jpg" class="d-block ">
+                        <img src="~/images/advert3.jpg" class="d-block ">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 class="text-dark">Women shoes</h5>
+                            <h5 class="text-dark">Winter bag offers</h5>
                             <p class="text-dark">
                                 Classic variant of style shoes
                             </p>
@@ -60,21 +60,21 @@
                      style="background-image: url(https://www.famousfootwear.com/c/-/media/project/famousfootwear/homepage/desktop/2019/holiday/size-3/promo/desktop-story3.jpg?h=240&w=600&la=en&hash=7ECAFFAE6A7792B879C123E7F0B13BB9E746AA75);">
                     <div class="under uL">
                         <a href="#">
-                            <span>asdsadasdassd</span>
+                            <span>SALES</span>
                         </a>
                         <p>
-                            asdasd
+                            Sale on women`s bags by 15.03
                         </p>
                     </div>
                 </div>
                 <div class="AdvCard"
-                     style="background-image:url(https://www.famousfootwear.com/c/-/media/project/famousfootwear/homepage/desktop/2019/bts/size-3/hp-banner-story3.jpg?h=240&w=600&la=en&hash=2846DAF1C55C74E821A7FE715C8E0A0DA5D58393)">
+                     style="background-image:url(images/suitcas.jfif)">
                     <div class="under uR">
                         <a href="#">
-                            <span>link</span>
+                            <span>Suitcases</span>
                         </a>
                         <p>
-                            asdasd
+                            Suitcases in catalog
                         </p>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     Random random = new Random();
                     int randomNumber = random.Next(0, Model.LayoutModel.ProducersCount-1);
                     <div class="AdvBlock"
-                         style="background-image: url('../images/@Model.LayoutModel.GetProducers[randomNumber].ImageName')">
+                         style="background-image: url('@Model.LayoutModel.GetProducers[randomNumber].ImageName')">
 
                         <div class="under @classUnder">
                             <h3>

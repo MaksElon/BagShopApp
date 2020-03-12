@@ -191,12 +191,12 @@ WriteAttributeValue("", 2646, link1, 2646, 6, false);
 #line default
 #line hidden
             BeginContext(3417, 683, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d104adea0b6e4e3fa3c7da0a48547b12", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b949b5e50f1f404684e93fab0df4633b", async() => {
                 BeginContext(3465, 18, true);
                 WriteLiteral("\r\n                ");
                 EndContext();
                 BeginContext(3483, 126, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f3f3c932947e4c98b4dbb78e8318a16d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1458f589a3bc461f9c9be0614507643a", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -245,7 +245,7 @@ AddHtmlAttributeValue("", 3590, Model.MaxPrice, 3590, 15, false);
                 WriteLiteral("\r\n                ");
                 EndContext();
                 BeginContext(3627, 127, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0d0ac33594984aa4939e4555cb38b03e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5b10c88b4b9b4277b85fc078b00505bf", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -366,7 +366,7 @@ WriteAttributeValue("", 3929, Model.MaxPrice, 3929, 15, false);
             WriteLiteral("    </div>\r\n    ");
             EndContext();
             BeginContext(4129, 562, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b332ee46fe6b4f9996e39faea90a3c26", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb81eb4f128041d5870980046365e281", async() => {
                 BeginContext(4156, 123, true);
                 WriteLiteral("\r\n        <input class=\"chosen-value\" type=\"text\" value=\"\" placeholder=\"Type to filter\">\r\n        <ul class=\"value-list\">\r\n");
                 EndContext();

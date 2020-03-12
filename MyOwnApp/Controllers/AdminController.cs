@@ -242,7 +242,7 @@ namespace MyOwnApp.Controllers
                     int summ = 0;
                     foreach (var item in _products.GetProducts)
                     {
-                        if (item.TypeOfProductOf.Id == type.Id)
+                        if (item.TypeId == type.Id)
                         {
                             int count = _productOrders.GetProductOrders.Where(t => t.ProductId == item.Id).Count();
                             if (count > 0)
